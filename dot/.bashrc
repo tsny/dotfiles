@@ -10,112 +10,117 @@ echo  " \__/____/_/ /_/\___ /   "
 echo  "               /____/    "
 echo  
 
+### VIM Movement
+
 export editor=vim
 set -o vi
 bind '"jk":vi-movement-mode'
+
+### Colors
 
 if [ -f ~/.colors ]; then
     source ~/.colors
 fi
 
-# Mac 
-    if [[ "$HOSTNAME" == CNC* ]]; then
-        source ~/tc_bash.sh
-    else
-        alias e="start gvim --remote-tab-silent"
-    fi
+### Mac 
 
-    # VIFM for WinBash
+if [[ "$HOSTNAME" == CNC* ]]; then
+    source ~/tc_bash.sh
+else
+    alias e="start gvim --remote-tab-silent"
+fi
 
-    if [ "$(uname)" == "Darwin" ]; then
-        echo 
-    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-        # Do something under GNU/Linux platform
-        echo 
-    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-        # Do something under 32 bits Windows NT platform
-        alias vifm="winpty vifm"
-    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-        # Do something under 64 bits Windows NT platform
-        alias vifm="winpty vifm"
-    fi
+# VIFM for WinBash
 
-# Aliases
+if [ "$(uname)" == "Darwin" ]; then
+    echo 
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Do something under GNU/Linux platform
+    echo 
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    # Do something under 32 bits Windows NT platform
+    alias vifm="winpty vifm"
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+    # Do something under 64 bits Windows NT platform
+    alias vifm="winpty vifm"
+fi
 
-    # Color based on OS
+### Aliases
 
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        alias ls="ls -Ga"
-    else
-        alias ls="ls --color"
-    fi
+# Color based on OS
 
-    # Programming
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias ls="ls -Ga"
+else
+    alias ls="ls --color"
+fi
 
-    alias py3="python3"
-    alias py="python"
-    alias gorm="go run main.go"
+# Programming
 
-    # Misc
+alias py3="python3"
+alias py="python"
+alias gorm="go run main.go"
 
-    alias ll="ls -l"
-    alias clear="clear"
-    alias c="clear"
-    alias ..="cd .."
-    alias q="exit"
-    alias fm="vifm"
+# Misc
 
-    alias ydla="youtube-dl -x --audio-format mp3"
+alias ll="ls -l"
+alias clear="clear"
+alias c="clear"
+alias ..="cd .."
+alias q="exit"
+alias fm="vifm"
 
-    alias ogc="open -a 'Google Chrome'"
-    alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
-    alias ppath="tr ':' '\n' <<< \"$PATH\""
+alias ydla="youtube-dl -x --audio-format mp3"
 
-    # CD Locations
+alias ogc="open -a 'Google Chrome'"
+alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
+alias ppath="tr ':' '\n' <<< \"$PATH\""
 
-    alias h="cd ~"
-    alias dv="cd ~/dev"
-    alias nt="cd ~/notes"
-    alias dc="cd ~/Documents"
-    alias ss="cd ~/screenshots"
-    alias dl="cd ~/Downloads"
-    alias dsk="cd ~/Desktop"
-    alias dot="cd ~/dev/dotfiles/"
-    alias csp="cd ~/notes/sprints/pi8/6"
+# CD Locations
 
-    # Quick edits
+alias h="cd ~"
+alias dv="cd ~/dev"
+alias nt="cd ~/notes"
+alias dc="cd ~/Documents"
+alias ss="cd ~/screenshots"
+alias dl="cd ~/Downloads"
+alias dsk="cd ~/Desktop"
+alias dot="cd ~/dev/dotfiles/"
+alias csp="cd ~/notes/sprints/pi8/6"
 
-    alias ebrc="vi ~/dev/dotfiles/dot/.bashrc"
-    alias evrc="vi ~/dev/dotfiles/dot/.vimrc"
+# Quick edits
 
-    # Git Stuff
+alias ebrc="vi ~/dev/dotfiles/dot/.bashrc"
+alias evrc="vi ~/dev/dotfiles/dot/.vimrc"
 
-    alias gup="git add -u"
-    alias gpl="git pull"
-    alias gc="git commit"
-    alias gac="git commit -a"
-    alias gcb="git checkout -b"
-    alias gco="git checkout"
-    alias guc="git add -u; git commit"
-    alias guf="git add -A; git commit -m 'Fast update commit'"
-    alias gac="git add -A; git commit"
-    alias gps="git push"
-    alias gst="git status"
-    alias giff="git diff"
-    alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# Git Stuff
 
-    # Docker
+alias gup="git add -u"
+alias gpl="git pull"
+alias gc="git commit"
+alias gac="git commit -a"
+alias gcb="git checkout -b"
+alias gco="git checkout"
+alias guc="git add -u; git commit"
+alias guf="git add -A; git commit -m 'Fast update commit'"
+alias gac="git add -A; git commit"
+alias gps="git push"
+alias gst="git status"
+alias giff="git diff"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-    alias dm='docker-machine'
-    alias dps='docker ps'
-    alias dmx='docker-machine ssh'
-    alias dk='docker'
-    alias dki='docker images'
-    alias dks='docker service'
-    alias dkrm='docker rm'
-    alias dkl='docker logs'
-    alias dklf='docker logs -f'
-    alias dkflush='docker rm `docker ps --no-trunc -aq`'
-    alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
-    alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
-    alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
+# Docker
+
+alias dm='docker-machine'
+alias dps='docker ps'
+alias dmx='docker-machine ssh'
+alias dk='docker'
+alias dki='docker images'
+alias dks='docker service'
+alias dkrm='docker rm'
+alias dkl='docker logs'
+alias dklf='docker logs -f'
+alias dkflush='docker rm `docker ps --no-trunc -aq`'
+alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
+alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
+alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
