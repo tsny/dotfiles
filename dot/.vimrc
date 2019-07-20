@@ -194,11 +194,12 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " Save the current session
-nnoremap <leader>ms :mksession!<CR>
+" nnoremap <leader>ms :mksession!<CR>
 
 " Tab moving with leader n/m
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
+map <Leader>tc <esc>:tabclose<CR>
 
 " Move up and down display lines rather than actual lines (for when lines
 " are wrapped)
@@ -216,7 +217,7 @@ vnoremap v <S-V>
 vnoremap <S-V> v
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>tn :tabnew<cr>:Vexplore<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
@@ -279,7 +280,6 @@ set smartindent
 " Look n' Feel
 
 " Removes startup message
-set cmdheight=2
 set shortmess=Ia
 
 " GUI Settings
@@ -292,7 +292,7 @@ set shortmess=Ia
 
 " Setting guifont, defaults to lesser-quality fonts if the previously tried ones don't exist
 if has("gui_running")
-    silent! set guifont=Consolas:h14,Office\ Code\ Pro:h14
+    silent! set guifont=Consolas:h10,Office\ Code\ Pro:h12
     set columns=150
     set lines=50
 endif
@@ -309,13 +309,18 @@ set tabstop=4 shiftwidth=4 expandtab
 
 " File Explorer
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3 
+let g:netrw_liststyle = 1 
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
+augroup ProjectDrawer
+    autocmd!
+    autocmd VimEnter * :Vexplore
+augroup END
+
 " Hide files that can't really be edited
-let g:netrw_list_hide= '.*\.swp$,.DS_Store,.meta,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
+let g:netrw_list_hide= '.*\.swp$,.DS_Store,ntuser*,NTUSER*,.meta,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
 
 " Misc    
 
@@ -336,7 +341,7 @@ endif
 " After all loading
 set ruler
 set showcmd
-set cmdheight=1
+set cmdheight=2
 
 " Indent guides
 let g:indent_guides_enable_on_vim_startup = 1
