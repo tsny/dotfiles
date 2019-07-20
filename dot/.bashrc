@@ -16,18 +16,28 @@ export editor=vim
 set -o vi
 bind '"jk":vi-movement-mode'
 
+export ORACLE_HOME=/Library/Oracle 
+export DYLD_LIBRARY_PATH=/Library/Oracle/instantclient_12_2 
+export TNS_ADMIN=/Library/Oracle/instantclient_12_2
+export LD_LIBRARY_PATH=/Library/Oracle/instantclient_12_2
+export NLS_LANG=AMERICAN_AMERICA.WE8MSWIN1252
+export CLASSPATH=$CLASSPATH:$ORACLE_HOME
+export GOPATH=/Users/cn168865/dev/go
+
 ### Colors
 
 if [ -f ~/.colors ]; then
+    echo "Loading colors..."
     source ~/.colors
 fi
 
 ### Mac 
 
-if [[ "$HOSTNAME" == CNC* ]]; then
+if [ -f ~/tc_bash.sh ]; then
+    echo "Loading work settings..."
     source ~/tc_bash.sh
-else
-    alias e="start gvim --remote-tab-silent"
+else 
+    echo "Loading home settings..."
 fi
 
 # VIFM for WinBash
@@ -53,6 +63,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias ls="ls -Ga"
 else
     alias ls="ls --color"
+    alias e="start gvim --remote-tab-silent"
 fi
 
 # Programming

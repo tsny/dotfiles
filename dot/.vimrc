@@ -193,9 +193,6 @@ endif
 nnoremap <tab> %
 vnoremap <tab> %
 
-" Save the current session
-nnoremap <leader>ms :mksession!<CR>
-
 " Tab moving with leader n/m
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
