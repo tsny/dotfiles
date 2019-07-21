@@ -11,7 +11,6 @@ set nocompatible
 set modelines=0
 
 " Directories
-
 set autochdir
 
 " Setting default shell 
@@ -221,6 +220,7 @@ map <leader>tn :tabnew<cr>:Vexplore<cr>
 map <leader>to :tabonly<cr>
 map <leader>tm :tabmove 
 map <Leader>tc <esc>:tabclose<CR>
+map <C-w> <esc>:tabclose<CR>
 
 " Automatically move to text instead of netrw
 
