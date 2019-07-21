@@ -214,6 +214,9 @@ nnoremap <S-V> v
 vnoremap v <S-V>
 vnoremap <S-V> v
 
+" Easy set syntax
+nnoremap <leader>ss :set syntax=
+
 " Tabs
 
 map <leader>tn :tabnew<cr>:Vexplore<cr>
