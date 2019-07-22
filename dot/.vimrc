@@ -10,6 +10,9 @@ set synmaxcol=200
 set nocompatible
 set modelines=0
 
+" Directories
+set autochdir
+
 " Setting default shell 
 if has('win32unix') || has('win32')
     set shell=C:\Program\ Files\Git\bin\bash
@@ -139,7 +142,7 @@ nnoremap K o<Esc>k
 nnoremap <leader>tz :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
 
 " Quickly get into .vimrc
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ev :tabnew<cr>:e $MYVIMRC<cr>
 
 " Begins open vsplit command
 nnoremap <leader>os :vsp<cr>
@@ -196,11 +199,6 @@ vnoremap <tab> %
 " Save the current session
 " nnoremap <leader>ms :mksession!<CR>
 
-" Tab moving with leader n/m
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
-map <Leader>tc <esc>:tabclose<CR>
-
 " Move up and down display lines rather than actual lines (for when lines
 " are wrapped)
 nnoremap j gj
@@ -216,12 +214,22 @@ nnoremap <S-V> v
 vnoremap v <S-V>
 vnoremap <S-V> v
 
-" Useful mappings for managing tabs
+" Easy set syntax
+nnoremap <leader>ss :set syntax=
+
+" Tabs
+
 map <leader>tn :tabnew<cr>:Vexplore<cr>
 map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <Leader>tc <esc>:tabclose<CR>
+map <C-w> <esc>:tabclose<CR>
+
+" Automatically move to text instead of netrw
+
+map <Leader>n <esc>:tabprevious<CR><C-l>
+map <Leader>m <esc>:tabnext<CR><C-l>
+
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -312,7 +320,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 1 
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_winsize = 15 
 
 augroup ProjectDrawer
     autocmd!
