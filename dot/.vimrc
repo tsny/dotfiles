@@ -300,7 +300,7 @@ set shortmess=Ia
 
 " Setting guifont, defaults to lesser-quality fonts if the previously tried ones don't exist
 if has("gui_running")
-    silent! set guifont=Consolas:h10,Office\ Code\ Pro:h12
+    silent! set guifont=Consolas:h10,Office\ Code\ Pro:h14
     set columns=150
     set lines=50
 endif
