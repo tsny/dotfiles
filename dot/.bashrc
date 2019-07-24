@@ -16,14 +16,6 @@ export editor=vim
 set -o vi
 bind '"jk":vi-movement-mode'
 
-export ORACLE_HOME=/Library/Oracle 
-export DYLD_LIBRARY_PATH=/Library/Oracle/instantclient_12_2 
-export TNS_ADMIN=/Library/Oracle/instantclient_12_2
-export LD_LIBRARY_PATH=/Library/Oracle/instantclient_12_2
-export NLS_LANG=AMERICAN_AMERICA.WE8MSWIN1252
-export CLASSPATH=$CLASSPATH:$ORACLE_HOME
-export GOPATH=/Users/cn168865/dev/go
-
 ### Colors
 
 if [ -f ~/.colors ]; then
@@ -98,7 +90,6 @@ alias dl="cd ~/Downloads"
 alias gg="cd $GOPATH/src"
 alias dsk="cd ~/Desktop"
 alias dot="cd ~/dev/dotfiles/"
-alias csp="cd ~/notes/sprints/pi8/6"
 
 # Quick edits
 
