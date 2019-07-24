@@ -87,7 +87,7 @@ alias nt="cd ~/notes"
 alias dc="cd ~/Documents"
 alias ss="cd ~/screenshots"
 alias dl="cd ~/Downloads"
-alias gg="cd $GOPATH/src"
+alias gg="cd ~/dev/go/src"
 alias dsk="cd ~/Desktop"
 alias dot="cd ~/dev/dotfiles/"
 
