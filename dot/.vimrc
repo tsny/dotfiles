@@ -219,7 +219,7 @@ nnoremap <leader>ss :set syntax=
 
 " Tabs
 
-map <leader>tn :tabnew<cr>:Vexplore<cr>
+map <leader>tn :tabnew<cr>:Vexplore<cr><C-l>:enew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tm :tabmove 
 map <Leader>tc <esc>:tabclose<CR>
