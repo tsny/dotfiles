@@ -23,15 +23,6 @@ if [ -f ~/.colors ]; then
     source ~/.colors
 fi
 
-### Mac 
-
-if [ -f ~/tc_bash.sh ]; then
-    echo "Loading work settings..."
-    source ~/tc_bash.sh
-else 
-    echo "Loading home settings..."
-fi
-
 # VIFM for WinBash
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -128,3 +119,12 @@ alias dkflush='docker rm `docker ps --no-trunc -aq`'
 alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
+
+### Mac 
+
+if [ -f ~/tc_bash.sh ]; then
+    echo "Loading work settings..."
+    source ~/tc_bash.sh
+else 
+    echo "Loading home settings..."
+fi

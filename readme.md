@@ -25,10 +25,13 @@ sh tsny.sh
 1. Move base installation to home dir  
 2. Make bootstrap load files in folders
 
+## Vim Plugins I like
+* fzf-vim
+
 ## Total Commander
 
-The Total Commander rc is not really something that I can move across different systems because the 
-folder structure in each Windows env is not going to be the same, but this is these are the vim like 
+The Total Commander config is not really something that I can move across different systems because the 
+folder structure in each Windows environment is not going to be the same, but this is these are the vim like 
 shortcuts that go in the `wincmd.ini`
 
 ```

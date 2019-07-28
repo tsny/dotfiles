@@ -13,6 +13,9 @@ set modelines=0
 " Directories
 set autochdir
 
+" Fzf
+set rtp+=/usr/local/opt/fzf
+
 " Setting default shell 
 if has('win32unix') || has('win32')
     set shell=C:\Program\ Files\Git\bin\bash
@@ -20,6 +23,7 @@ else
     set shell=/bin/bash
 endif
 
+" Allows for plugins/indents based on filetype
 filetype indent on
 filetype plugin on
 
@@ -52,7 +56,6 @@ set statusline+=%=%*%y%*%*\
 set statusline+=%P\ \                     
 
 " Functions
-
 function! Fullscreen()
     if has("gui_running")
       " GUI is running or is about to start.
@@ -147,8 +150,14 @@ nnoremap <leader>ev :tabnew<cr>:e $MYVIMRC<cr>
 " Begins open vsplit command
 nnoremap <leader>os :vsp<cr>
 
+" Open vifmrc
+nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
+
 " Open file explorer
 nnoremap <leader>oe :Vexplore<CR>
+
+" FZF History
+nnoremap <leader>h :History<cr>
 
 " Makes all splits equal size
 nnoremap <leader>eq <C-w>=
@@ -300,7 +309,7 @@ set shortmess=Ia
 
 " Setting guifont, defaults to lesser-quality fonts if the previously tried ones don't exist
 if has("gui_running")
-    silent! set guifont=Consolas:h10,Office\ Code\ Pro:h14
+    silent! set guifont=Office\ Code\ Pro:h15
     set columns=150
     set lines=50
 endif
@@ -322,13 +331,15 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15 
 
+" Open netrw on left on vim startup
+
 augroup ProjectDrawer
     autocmd!
     autocmd VimEnter * :Vexplore
     autocmd VimEnter * :execute "normal \<C-L>"
 augroup END
 
-" Hide files that can't really be edited
+" Hide these filetypes in netrw 
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,ntuser*,NTUSER*,.meta,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
 
 " Misc    
@@ -339,7 +350,7 @@ set clipboard=unnamed
 " Allows the deletion of previously typed characters in a different insert-mode 'instance'
 set backspace=indent,eol,start
 
-" No more backups and swaps
+" No backups and swaps
 set nobackup
 set noswapfile
 
@@ -359,3 +370,6 @@ let g:indent_guides_start_level = 1
 
 "Default the status bar to lightblue
 hi statusline guibg=lightblue ctermbg=lightblue
+
+" Spelling correction on markdown files
+autocmd FileType Markdown :set spell
