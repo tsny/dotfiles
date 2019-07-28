@@ -90,6 +90,7 @@ alias dl="cd ~/Downloads"
 alias gg="cd ~/dev/go/src"
 alias dsk="cd ~/Desktop"
 alias dot="cd ~/dev/dotfiles/"
+alias jr="cd ~/notes/journal"
 
 # Quick edits
 

@@ -157,7 +157,7 @@ nnoremap <leader>eq <C-w>=
 nnoremap <leader>so :so $MYVIMRC<CR>
 
 " Force quit fast
-nnoremap <leader>q :q!<CR>
+nnoremap <leader>q :qa!<CR>
 
 " Faster saving
 nnoremap <leader>w :w<CR>
@@ -325,6 +325,7 @@ let g:netrw_winsize = 15
 augroup ProjectDrawer
     autocmd!
     autocmd VimEnter * :Vexplore
+    autocmd VimEnter * :execute "normal \<C-L>"
 augroup END
 
 " Hide files that can't really be edited
