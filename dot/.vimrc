@@ -10,11 +10,8 @@ set synmaxcol=200
 set nocompatible
 set modelines=0
 
-" Directories
-set autochdir
-
-" Fzf
-set rtp+=/usr/local/opt/fzf
+" auto change dir
+autocmd BufEnter * silent! lcd %:p:h
 
 " Setting default shell 
 if has('win32unix') || has('win32')
@@ -156,8 +153,14 @@ nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
 " Open file explorer
 nnoremap <leader>oe :Vexplore<CR>
 
-" FZF History
+" Fzf
+
+nnoremap <c-p> :Windows<cr>
 nnoremap <leader>h :History<cr>
+nnoremap <leader>b :Buffers<cr>
+
+let g:fzf_buffers_jump = 1
+set rtp+=/usr/local/opt/fzf
 
 " Makes all splits equal size
 nnoremap <leader>eq <C-w>=
@@ -166,7 +169,7 @@ nnoremap <leader>eq <C-w>=
 nnoremap <leader>so :so $MYVIMRC<CR>
 
 " Force quit fast
-nnoremap <leader>q :qa!<CR>
+nnoremap <leader>q :q!<CR>
 
 " Faster saving
 nnoremap <leader>w :w<CR>
@@ -228,7 +231,7 @@ nnoremap <leader>ss :set syntax=
 
 " Tabs
 
-map <leader>tn :tabnew<cr>:Vexplore<cr><C-l>:enew<cr>
+map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tm :tabmove 
 map <Leader>tc <esc>:tabclose<CR>
@@ -331,16 +334,9 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15 
 
-" Open netrw on left on vim startup
-
-augroup ProjectDrawer
-    autocmd!
-    autocmd VimEnter * :Vexplore
-    autocmd VimEnter * :execute "normal \<C-L>"
-augroup END
-
 " Hide these filetypes in netrw 
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,ntuser*,NTUSER*,.meta,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
+
 
 " Misc    
 
