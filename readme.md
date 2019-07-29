@@ -1,6 +1,6 @@
 # My Bash Stuff
 
-It ain't much, but it's somethin'.
+It ain't much, but it's something
 
 ## Prerequisite
 

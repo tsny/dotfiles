@@ -368,4 +368,4 @@ let g:indent_guides_start_level = 1
 hi statusline guibg=lightblue ctermbg=lightblue
 
 " Spelling correction on markdown files
-autocmd FileType Markdown :set spell
+autocmd FileType Markdown :setlocal spell
