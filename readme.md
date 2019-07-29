@@ -45,4 +45,7 @@ C+P=cm_CopySrcPathToClip
 OEM_+=cm_MatchSrc
 C+R=cm_RenameOnly
 C+M=cm_RenMov
+C+F=cm_SearchFor
+C+N=cm_EditNewFile
+BACK=cm_GotoPreviousDir
 ```

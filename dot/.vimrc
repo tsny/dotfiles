@@ -2,7 +2,7 @@
 " Description: my .vimrc
 " Attributions: jdavis, tpope, stevelosh, tshirtman_ 
 
-" Before loading begins
+" --- BEFORE OTHER CMDS ---
 
 " Few commands for improving performance
 set regexpengine=1
@@ -30,7 +30,7 @@ set wildignore+=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn,*/cm/log/**
 set wildignore+=tags,*.jpg,*.png,*.jpeg,*.png,*.mesh,build*/**,build/**,*.svg,build2/**,build3/**
 set lazyredraw
 
-" Status line
+" --- STATUS LINE ---
 
 set laststatus=2
 
@@ -104,6 +104,8 @@ function! CopyDir()
     echo "copied dir: " . @*
 endfunction
 
+" --- STATUS LINE ---
+
 function! InsertStatuslineColor(mode)
     if a:mode == 'i'
         hi statusline guibg=lightred ctermbg=lightred
@@ -111,8 +113,6 @@ function! InsertStatuslineColor(mode)
         hi statusline guibg=lightgreen ctermbg=lightgreen
     endif
 endfunction
-
-" Auto-commands
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertChange * call InsertStatuslineColor(v:insertmode)
@@ -131,7 +131,7 @@ vnoremap ; :
 "set number relativenumber
 set number
 
-" Remaps
+" --- BINDINGS ---
 
 " Insert new line below without entering insert mode (also removes
 " help-mapping)
@@ -298,7 +298,7 @@ set smartcase
 set autoindent
 set smartindent
 
-" Look n' Feel
+" --- AESTHETIC ---
 
 " Removes startup message
 set shortmess=Ia
@@ -338,8 +338,7 @@ let g:netrw_winsize = 15
 " Hide these filetypes in netrw 
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,ntuser*,NTUSER*,.meta,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
 
-
-" Misc    
+" -- MISC --
 
 " Yanking always copies to clipboard
 set clipboard=unnamed
