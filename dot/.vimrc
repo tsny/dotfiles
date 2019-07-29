@@ -6,7 +6,7 @@
 
 " Few commands for improving performance
 set regexpengine=1
-set synmaxcol=200
+set synmaxcol=1000
 set nocompatible
 set modelines=0
 
@@ -145,7 +145,8 @@ nnoremap <leader>tz :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR
 nnoremap <leader>ev :tabnew<cr>:e $MYVIMRC<cr>
 
 " Begins open vsplit command
-nnoremap <leader>os :vsp<cr>
+nnoremap <leader>vs :vsp<cr>
+nnoremap <leader>hs :split<cr>
 
 " Open vifmrc
 nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
@@ -154,8 +155,8 @@ nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
 nnoremap <leader>oe :Vexplore<CR>
 
 " Fzf
-
 nnoremap <c-p> :Windows<cr>
+nnoremap <c-r> :History<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader>b :Buffers<cr>
 
