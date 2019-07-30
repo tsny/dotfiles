@@ -104,20 +104,6 @@ function! CopyDir()
     echo "copied dir: " . @*
 endfunction
 
-" --- STATUS LINE ---
-
-function! InsertStatuslineColor(mode)
-    if a:mode == 'i'
-        hi statusline guibg=lightred ctermbg=lightred
-    else
-        hi statusline guibg=lightgreen ctermbg=lightgreen
-    endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertChange * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=lightblue ctermbg=cyan
-
 " Bare necessities
 
 syntax on
@@ -364,8 +350,22 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 1
 
-"Default the status bar to lightblue
-hi statusline guibg=lightblue ctermbg=lightblue
-
 " Spelling correction on markdown files
 autocmd FileType Markdown :setlocal spell
+
+" --- STATUS LINE ---
+
+function! InsertStatuslineColor(mode)
+    if a:mode == 'i'
+        hi statusline guifg=White ctermfg=Black guibg=lightred ctermbg=lightred
+    else
+        hi statusline guibg=lightgreen ctermbg=lightgreen
+    endif
+endfunction
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertChange * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guibg=lightblue ctermfg=Black ctermbg=cyan
+
+"Default the status bar to lightblue
+hi statusline guibg=lightblue ctermbg=cyan guibg=lightblue ctermfg=Black 

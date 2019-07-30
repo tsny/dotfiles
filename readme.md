@@ -1,4 +1,4 @@
-# My Bash Stuff
+# tsny Dotfiles
 
 It ain't much, but it's something
 
