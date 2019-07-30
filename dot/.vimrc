@@ -32,17 +32,17 @@ set lazyredraw
 
 " --- STATUS LINE ---
 
-set laststatus=2
-
 " Left side of status bar
 set laststatus=2
+
 set statusline=
 set statusline+=%*\ %l
 set statusline+=\ %*
 set statusline+=%*\%f\ %*
 set statusline+=%*\ %m
 
-set statusline+=%*\ %F
+"set statusline+=%*\ %F
+set statusline+=%{getcwd()}
 
 " Seperator
 set statusline+=%=
@@ -350,14 +350,11 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 1
 
-" Spelling correction on markdown files
-autocmd FileType Markdown :setlocal spell
-
 " --- STATUS LINE ---
 
 function! InsertStatuslineColor(mode)
     if a:mode == 'i'
-        hi statusline guifg=White ctermfg=Black guibg=lightred ctermbg=lightred
+        hi statusline guifg=Black ctermfg=Black guibg=lightred ctermbg=lightred
     else
         hi statusline guibg=lightgreen ctermbg=lightgreen
     endif
