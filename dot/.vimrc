@@ -7,7 +7,7 @@
 " Few commands for improving performance
 set regexpengine=1
 set synmaxcol=1000
-set nocompatible
+set compatible
 set modelines=0
 
 " auto change dir
@@ -107,7 +107,7 @@ endfunction
 " Bare necessities
 
 syntax on
-inoremap jk <Esc>
+inoremap <special> jk <ESC>
 let mapleader = ","
 nnoremap ; :
 vnoremap ; :
