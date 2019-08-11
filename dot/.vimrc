@@ -10,6 +10,10 @@ set synmaxcol=1000
 set compatible
 set modelines=0
 
+" Ubuntu Terminal
+set term=screen-256color
+set t_ut=
+
 " auto change dir
 autocmd BufEnter * silent! lcd %:p:h
 
