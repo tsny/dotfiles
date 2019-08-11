@@ -39,7 +39,7 @@ set statusline=
 set statusline+=%*\ %l
 set statusline+=\ %*
 set statusline+=%*\%f\ %*
-set statusline+=%*\ %m
+set statusline+=%*\ %m\ \  
 
 "set statusline+=%*\ %F
 set statusline+=%{getcwd()}
@@ -299,7 +299,7 @@ set shortmess=Ia
 
 " Setting guifont, defaults to lesser-quality fonts if the previously tried ones don't exist
 if has("gui_running")
-    silent! set guifont=Office\ Code\ Pro:h15
+    silent! set guifont=Office\ Code\ Pro:h14
     set columns=150
     set lines=50
 endif
