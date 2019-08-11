@@ -7,8 +7,12 @@
 " Few commands for improving performance
 set regexpengine=1
 set synmaxcol=1000
-set nocompatible
+set compatible
 set modelines=0
+
+" Ubuntu Terminal
+set term=screen-256color
+set t_ut=
 
 " auto change dir
 autocmd BufEnter * silent! lcd %:p:h
@@ -107,7 +111,7 @@ endfunction
 " Bare necessities
 
 syntax on
-inoremap jk <Esc>
+inoremap <special> jk <ESC>
 let mapleader = ","
 nnoremap ; :
 vnoremap ; :

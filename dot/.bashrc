@@ -12,7 +12,8 @@ echo
 
 ### VIM Movement
 
-export editor=vim
+export EDITOR=VIM
+export VISUAL=VIM
 set -o vi
 bind '"jk":vi-movement-mode'
 
