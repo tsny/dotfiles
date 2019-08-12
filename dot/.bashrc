@@ -58,6 +58,7 @@ alias gorm="go run main.go"
 
 # fzf
 alias fd='`__fzf_cd__`'
+bind -x '"\C-f":"`__fzf_cd__`"'
 
 # Misc
 
