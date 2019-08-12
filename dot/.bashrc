@@ -56,11 +56,6 @@ alias py3="python3"
 alias py="python"
 alias gorm="go run main.go"
 
-# fzf
-alias fd='`__fzf_cd__`'
-alias ef='vim $(fzf --height 40%)'
-bind -x '"\C-f":"`__fzf_cd__`"'
-
 # Misc
 
 alias ll="ls -l"
