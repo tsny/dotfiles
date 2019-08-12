@@ -129,3 +129,5 @@ if [ -f ~/tc_bash.sh ]; then
 else 
     echo "Loading home settings..."
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

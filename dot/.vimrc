@@ -290,6 +290,9 @@ set smartindent
 
 " --- AESTHETIC ---
 
+set title
+
+
 " Removes startup message
 set shortmess=Ia
 
@@ -309,8 +312,11 @@ if has("gui_running")
 endif
 
 " Setting colorscheme, degrades/defaults in a similar way to guifont
-colorscheme desert
-silent! colorscheme atom-dark-256
+if &t_Co >= 256 || has("gui_running")
+    colorscheme desert
+    silent! colorscheme atom-dark-256
+endif
+
 
 " Moves the window rather than the cursor
 " set scrolloff=20
@@ -340,6 +346,7 @@ set backspace=indent,eol,start
 set nobackup
 set noswapfile
 
+" Bells
 if exists('&belloff')
     set belloff=all
 endif
@@ -370,3 +377,11 @@ au InsertLeave * hi statusline guibg=lightblue ctermfg=Black ctermbg=cyan
 
 "Default the status bar to lightblue
 hi statusline guibg=lightblue ctermbg=cyan guibg=lightblue ctermfg=Black 
+
+set rtp+=~/.fzf
+
+" VIM PLUG
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+call plug#end()
