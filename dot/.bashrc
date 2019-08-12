@@ -130,4 +130,5 @@ else
     echo "Loading home settings..."
 fi
 
+## alias fd='`__fzf_cd__`'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

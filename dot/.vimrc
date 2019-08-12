@@ -7,7 +7,7 @@
 " Few commands for improving performance
 set regexpengine=1
 set synmaxcol=1000
-set compatible
+set nocompatible
 set modelines=0
 
 " Ubuntu Terminal
