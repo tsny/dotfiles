@@ -58,6 +58,7 @@ alias gorm="go run main.go"
 
 # fzf
 alias fd='`__fzf_cd__`'
+alias ef='vim $(fzf)'
 bind -x '"\C-f":"`__fzf_cd__`"'
 
 # Misc
@@ -125,7 +126,7 @@ alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trun
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 
-### Mac 
+### Work/Home 
 
 if [ -f ~/tc_bash.sh ]; then
     echo "Loading work settings..."
@@ -134,6 +135,5 @@ else
     echo "Loading home settings..."
 fi
 
-## alias fd='`__fzf_cd__`'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 PS1="$PS1\n " 
