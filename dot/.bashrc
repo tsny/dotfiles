@@ -58,7 +58,7 @@ alias gorm="go run main.go"
 
 # fzf
 alias fd='`__fzf_cd__`'
-alias ef='vim $(fzf)'
+alias ef='vim $(fzf --height 40%)'
 bind -x '"\C-f":"`__fzf_cd__`"'
 
 # Misc
