@@ -56,6 +56,9 @@ alias py3="python3"
 alias py="python"
 alias gorm="go run main.go"
 
+# fzf
+alias fd='`__fzf_cd__`'
+
 # Misc
 
 alias ll="ls -l"
@@ -132,3 +135,4 @@ fi
 
 ## alias fd='`__fzf_cd__`'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+PS1="$PS1\n " 
