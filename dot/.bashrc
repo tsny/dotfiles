@@ -121,7 +121,7 @@ alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trun
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 
-### Mac 
+### Work/Home 
 
 if [ -f ~/tc_bash.sh ]; then
     echo "Loading work settings..."
@@ -131,3 +131,4 @@ else
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+PS1="$PS1\n " 
