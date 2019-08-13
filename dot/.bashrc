@@ -17,6 +17,10 @@ export VISUAL=VIM
 set -o vi
 bind '"jk":vi-movement-mode'
 
+### Aesthetic
+
+PROMPT_COMMAND="echo"
+
 ### Colors
 
 if [ -f ~/.colors ]; then
@@ -132,3 +136,4 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 PS1="$PS1\n " 
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
