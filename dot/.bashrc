@@ -21,12 +21,16 @@ bind '"jk":vi-movement-mode'
 
 PROMPT_COMMAND="echo"
 
+### Bindings
+
+bind -x '"\C-k":"clear"'
+
 ### Colors
 
-if [ -f ~/.colors ]; then
-    echo "Loading colors..."
-    source ~/.colors
+if [ -f ~/.bash-powerline.sh ]; then
+    source ~/.bash-powerline.sh
 fi
+
 
 # VIFM for WinBash
 
