@@ -31,22 +31,6 @@ if [ -f ~/.bash-powerline.sh ]; then
     source ~/.bash-powerline.sh
 fi
 
-
-# VIFM for WinBash
-
-if [ "$(uname)" == "Darwin" ]; then
-    echo 
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Do something under GNU/Linux platform
-    echo 
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-    # Do something under 32 bits Windows NT platform
-    alias vifm="winpty vifm"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    # Do something under 64 bits Windows NT platform
-    alias vifm="winpty vifm"
-fi
-
 ### Aliases
 
 # Color based on OS
@@ -67,13 +51,10 @@ alias gorm="go run main.go"
 # Misc
 
 alias ll="ls -l"
-alias clear="clear"
-alias c="clear"
 alias ..="cd .."
-alias q="exit"
 alias fm="vifm"
 
-alias rs="exec bash"
+alias reload="exec bash"
 
 alias ydla="youtube-dl -x --audio-format mp3"
 
