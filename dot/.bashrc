@@ -73,6 +73,8 @@ alias ..="cd .."
 alias q="exit"
 alias fm="vifm"
 
+alias rs="exec bash"
+
 alias ydla="youtube-dl -x --audio-format mp3"
 
 alias ogc="open -a 'Google Chrome'"
