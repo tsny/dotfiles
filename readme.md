@@ -17,7 +17,7 @@ git clone https://github.com/tsny/dotfiles.git ~/dev/dotfiles
 Run this to create folders and symlink the stuff
 
 ```
-sh tsny.sh
+sh bootstrap.sh
 ```
 
 ## TODO
