@@ -79,19 +79,6 @@ alias ogc="open -a 'Google Chrome'"
 alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
 alias ppath="tr ':' '\n' <<< \"$PATH\""
 
-# CD Locations
-
-alias h="cd ~"
-alias dv="cd ~/dev"
-alias nt="cd ~/notes"
-alias dc="cd ~/Documents"
-alias ss="cd ~/screenshots"
-alias dl="cd ~/Downloads"
-alias gg="cd ~/dev/go/src"
-alias dsk="cd ~/Desktop"
-alias dot="cd ~/dev/dotfiles/"
-alias jr="cd ~/notes/journal"
-
 # Quick edits
 
 alias ebrc="vi ~/dev/dotfiles/dot/.bashrc"
@@ -129,6 +116,22 @@ alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trun
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 
+bm() {
+    local curr_dir="${PWD}"
+        if ! grep -Fxq "$curr_dir" ~/.shell_bookmarks; then
+            echo "$curr_dir" >> ~/.shell_bookmarks
+        else 
+            echo "$PWD already bookmarked"
+        fi
+}
+
+gbm() {
+     local dest_dir=$(cat ~/.shell_bookmarks | fzf )
+       if [[ $dest_dir != '' ]]; then
+          cd "$dest_dir"
+       fi
+}
+
 ### Work/Home 
 
 if [ -f ~/tc_bash.sh ]; then
@@ -140,4 +143,3 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 PS1="$PS1\n " 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
