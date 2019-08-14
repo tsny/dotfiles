@@ -79,11 +79,6 @@ alias ogc="open -a 'Google Chrome'"
 alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
 alias ppath="tr ':' '\n' <<< \"$PATH\""
 
-# Quick edits
-
-alias ebrc="vi ~/dev/dotfiles/dot/.bashrc"
-alias evrc="vi ~/dev/dotfiles/dot/.vimrc"
-
 # Git Stuff
 
 alias gup="git add -u"
@@ -125,7 +120,7 @@ bm() {
         fi
 }
 
-gbm() {
+gg() {
      local dest_dir=$(cat ~/.shell_bookmarks | fzf )
        if [[ $dest_dir != '' ]]; then
           cd "$dest_dir"
