@@ -145,7 +145,7 @@ nnoremap <leader>oe :Vexplore<CR>
 " Fzf
 nnoremap <c-p> :Windows<cr>
 nnoremap <c-h> :History<cr>
-nnoremap <leader>h :History<cr>
+nnoremap H :History<cr>
 nnoremap <leader>b :Buffers<cr>
 
 let g:fzf_buffers_jump = 1
