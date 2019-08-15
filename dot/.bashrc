@@ -110,6 +110,8 @@ gg() {
        fi
 }
 
+bind '"\C-b":"gg\n"'
+
 ### Work/Home 
 
 if [ -f ~/tc_bash.sh ]; then
