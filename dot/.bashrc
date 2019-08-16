@@ -121,5 +121,16 @@ else
     echo "Loading home settings..."
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+## Rust
+PATH=~/.cargo/bin:$PATH
+
+## FZF
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+    source ~/.tsny.fzf
+fi
+
+## New line for prompt
 PS1="$PS1\n " 
+
+export PATH
