@@ -379,7 +379,9 @@ hi statusline guibg=lightblue ctermbg=cyan guibg=lightblue ctermfg=Black
 set rtp+=~/.fzf
 
 " VIM PLUG
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-call plug#end()
+if exists("plug")
+    call plug#begin('~/.vim/plugged')
+    Plug 'junegunn/fzf.vim'
+    Plug 'nathanaelkane/vim-indent-guides'
+    call plug#end()
+endif
