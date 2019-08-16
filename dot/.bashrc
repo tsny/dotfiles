@@ -94,6 +94,8 @@ alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trun
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 
+### Bookmark Functions
+
 bm() {
     local curr_dir="${PWD}"
         if ! grep -Fxq "$curr_dir" ~/.shell_bookmarks; then
@@ -109,6 +111,8 @@ gg() {
           cd "$dest_dir"
        fi
 }
+
+### Bindings
 
 bind '"\C-b":"gg\n"'
 
