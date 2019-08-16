@@ -55,6 +55,7 @@ alias ..="cd .."
 alias fm="vifm"
 
 alias reload="exec bash"
+alias lvl="echo $SHLVL"
 
 alias ydla="youtube-dl -x --audio-format mp3"
 
