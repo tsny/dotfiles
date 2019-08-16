@@ -143,7 +143,7 @@ nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
 nnoremap <leader>oe :Vexplore<CR>
 
 " Fzf
-nnoremap <c-p> :Windows<cr>
+nnoremap <c-p> :Buffers<cr>
 nnoremap <c-h> :History<cr>
 nnoremap H :History<cr>
 nnoremap <leader>b :Buffers<cr>
@@ -379,9 +379,7 @@ hi statusline guibg=lightblue ctermbg=cyan guibg=lightblue ctermfg=Black
 set rtp+=~/.fzf
 
 " Vim Plug
-if exists('plug#begin')
-    call plug#begin('~/.vim/plugged')
-    Plug 'junegunn/fzf.vim'
-    Plug 'nathanaelkane/vim-indent-guides'
-    call plug#end()
-endif
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+call plug#end()
