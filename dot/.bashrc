@@ -95,6 +95,11 @@ alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trun
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 
+## Helper method to see if app exists
+command_exists () {
+    type "$1" &> /dev/null;
+}
+
 bm() {
     local curr_dir="${PWD}"
         if ! grep -Fxq "$curr_dir" ~/.shell_bookmarks; then
@@ -133,5 +138,12 @@ fi
 
 ## New line for prompt
 PS1="$PS1\n " 
+
+
+## Check for exa
+if command_exists exa;  then
+    alias ls="exa"
+    alias ll="exa -l"
+fi
 
 export PATH
