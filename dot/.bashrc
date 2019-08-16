@@ -17,26 +17,18 @@ export VISUAL=VIM
 set -o vi
 bind '"jk":vi-movement-mode'
 
+### Aesthetic
+
+PROMPT_COMMAND="echo"
+
+### Bindings
+
+bind -x '"\C-k":"clear"'
+
 ### Colors
 
-if [ -f ~/.colors ]; then
-    echo "Loading colors..."
-    source ~/.colors
-fi
-
-# VIFM for WinBash
-
-if [ "$(uname)" == "Darwin" ]; then
-    echo 
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Do something under GNU/Linux platform
-    echo 
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-    # Do something under 32 bits Windows NT platform
-    alias vifm="winpty vifm"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    # Do something under 64 bits Windows NT platform
-    alias vifm="winpty vifm"
+if [ -f ~/.bash-powerline.sh ]; then
+    source ~/.bash-powerline.sh
 fi
 
 ### Aliases
@@ -59,35 +51,16 @@ alias gorm="go run main.go"
 # Misc
 
 alias ll="ls -l"
-alias clear="clear"
-alias c="clear"
 alias ..="cd .."
-alias q="exit"
 alias fm="vifm"
+
+alias reload="exec bash"
 
 alias ydla="youtube-dl -x --audio-format mp3"
 
 alias ogc="open -a 'Google Chrome'"
 alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
 alias ppath="tr ':' '\n' <<< \"$PATH\""
-
-# CD Locations
-
-alias h="cd ~"
-alias dv="cd ~/dev"
-alias nt="cd ~/notes"
-alias dc="cd ~/Documents"
-alias ss="cd ~/screenshots"
-alias dl="cd ~/Downloads"
-alias gg="cd ~/dev/go/src"
-alias dsk="cd ~/Desktop"
-alias dot="cd ~/dev/dotfiles/"
-alias jr="cd ~/notes/journal"
-
-# Quick edits
-
-alias ebrc="vi ~/dev/dotfiles/dot/.bashrc"
-alias evrc="vi ~/dev/dotfiles/dot/.vimrc"
 
 # Git Stuff
 
@@ -120,6 +93,24 @@ alias dkflush='docker rm `docker ps --no-trunc -aq`'
 alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
+
+bm() {
+    local curr_dir="${PWD}"
+        if ! grep -Fxq "$curr_dir" ~/.shell_bookmarks; then
+            echo "$curr_dir" >> ~/.shell_bookmarks
+        else 
+            echo "$PWD already bookmarked"
+        fi
+}
+
+gg() {
+     local dest_dir=$(cat ~/.shell_bookmarks | fzf )
+       if [[ $dest_dir != '' ]]; then
+          cd "$dest_dir"
+       fi
+}
+
+bind '"\C-b":"gg\n"'
 
 ### Work/Home 
 

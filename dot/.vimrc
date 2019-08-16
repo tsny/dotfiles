@@ -20,8 +20,6 @@ autocmd BufEnter * silent! lcd %:p:h
 " Setting default shell 
 if has('win32unix') || has('win32')
     set shell=C:\Program\ Files\Git\bin\bash
-else
-    set shell=/bin/bash
 endif
 
 " Allows for plugins/indents based on filetype
@@ -146,8 +144,8 @@ nnoremap <leader>oe :Vexplore<CR>
 
 " Fzf
 nnoremap <c-p> :Windows<cr>
-nnoremap <c-r> :History<cr>
-nnoremap <leader>h :History<cr>
+nnoremap <c-h> :History<cr>
+nnoremap H :History<cr>
 nnoremap <leader>b :Buffers<cr>
 
 let g:fzf_buffers_jump = 1
