@@ -55,6 +55,7 @@ alias ..="cd .."
 alias fm="vifm"
 
 alias reload="exec bash"
+alias lvl="echo $SHLVL"
 
 alias ydla="youtube-dl -x --audio-format mp3"
 
@@ -94,8 +95,14 @@ alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trun
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 
-### Bookmark Functions
 
+## Helper method to see if app exists
+command_exists () {
+    type "$1" &> /dev/null;
+}
+
+
+### Bookmark Functions
 bm() {
     local curr_dir="${PWD}"
         if ! grep -Fxq "$curr_dir" ~/.shell_bookmarks; then
@@ -125,5 +132,23 @@ else
     echo "Loading home settings..."
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+## Rust
+PATH=~/.cargo/bin:$PATH
+
+## FZF
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+    source ~/.tsny.fzf
+fi
+
+## New line for prompt
 PS1="$PS1\n " 
+
+
+## Check for exa
+if command_exists exa;  then
+    alias ls="exa"
+    alias ll="exa -l"
+fi
+
+export PATH

@@ -2,6 +2,8 @@ printf "Starting setup...\n"
 
 printf "\nCreating dirs...\n"
 
+touch ~/.shell_bookmarks
+
 mkdir -p ~/.config/vifm/colors
 mkdir ~/dev
 mkdir ~/screenshots
@@ -21,4 +23,6 @@ done
 
 printf "\nFinished setup...\n"
 
-bash
+printf "\nRestarting bash...\n"
+
+exec bash
