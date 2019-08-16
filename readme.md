@@ -25,8 +25,14 @@ sh bootstrap.sh
 1. Move base installation to home dir  
 2. Make bootstrap load files in folders
 
-## Vim Plugins I like
+## Plugins
 * fzf-vim
+
+FZF Install
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
 
 ## Total Commander
 
