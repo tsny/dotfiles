@@ -121,6 +121,8 @@ gg() {
 
 ### Bindings
 
+#### Ctrl + B: Bookmarks
+
 bind '"\C-b":"gg\n"'
 
 ### Work/Home 
