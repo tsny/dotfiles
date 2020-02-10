@@ -5,7 +5,10 @@
 
 [core]
 	editor = vim
+	autocrlf = input
 
 [web]
     browser = google-chrome
     editor = 'vim'
+[push]
+	default = current

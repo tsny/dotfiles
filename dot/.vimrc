@@ -17,7 +17,7 @@ set t_ut=
 " auto change dir
 autocmd BufEnter * silent! lcd %:p:h
 
-" Setting default shell 
+" Setting default shell in windows
 if has('win32unix') || has('win32')
     set shell=C:\Program\ Files\Git\bin\bash
 endif
@@ -110,6 +110,8 @@ endfunction
 
 syntax on
 inoremap <special> jk <ESC>
+inoremap <special> kj <ESC>
+inoremap <special> jj <ESC>
 let mapleader = ","
 nnoremap ; :
 vnoremap ; :
@@ -124,6 +126,9 @@ set number
 " Insert new line below without entering insert mode (also removes
 " help-mapping)
 nnoremap K o<Esc>k
+
+" Format file
+map <F7> gg=G<C-o><C-o>
 
 " Terminal binding that auto sources .bash_profile
 "nnoremap <leader>z :term<CR>source $HOME/.bash_profile<CR>
@@ -382,4 +387,5 @@ set rtp+=~/.fzf
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
