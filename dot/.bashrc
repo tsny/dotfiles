@@ -122,7 +122,13 @@ PATH=~/.cargo/bin:$PATH
 PS1="$PS1\n " 
 PS1="$PS1:\[\e[f\e[K\]"
 
-alias ls=exa
+alias ls="exa"
+
+## Check for exa
+if exa -v; then
+    alias ls="exa"
+    alias ll="exa -l"
+fi
 
 export PATH
 
