@@ -23,7 +23,7 @@ PROMPT_COMMAND="echo"
 
 ### Bindings
 
-bind -x '"\C-k":"clear"'
+bind '"\C-l":"clear\n"'
 
 ### Colors
 
@@ -44,8 +44,7 @@ fi
 
 # Programming
 
-alias py3="python3"
-alias py="python"
+alias py="python3"
 alias gorm="go run main.go"
 
 # Misc
@@ -94,36 +93,18 @@ alias dkflush='docker rm `docker ps --no-trunc -aq`'
 alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
+alias dksa="docker stop $(docker ps -a -q)"
 
+## Load custom fzf settings
 
-## Helper method to see if app exists
-command_exists () {
-    type "$1" &> /dev/null;
-}
+## FZF
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
 
-
-### Bookmark Functions
-bm() {
-    local curr_dir="${PWD}"
-        if ! grep -Fxq "$curr_dir" ~/.shell_bookmarks; then
-            echo "$curr_dir" >> ~/.shell_bookmarks
-        else 
-            echo "$PWD already bookmarked"
-        fi
-}
-
-gg() {
-     local dest_dir=$(cat ~/.shell_bookmarks | fzf )
-       if [[ $dest_dir != '' ]]; then
-          cd "$dest_dir"
-       fi
-}
-
-### Bindings
-
-#### Ctrl + B: Bookmarks
-
-bind '"\C-b":"gg\n"'
+if [ -f ~/tsny-fzf.sh ]; then
+    source ~/tsny-fzf.sh
+fi
 
 ### Work/Home 
 
@@ -137,20 +118,15 @@ fi
 ## Rust
 PATH=~/.cargo/bin:$PATH
 
-## FZF
-if [ -f ~/.fzf.bash ]; then
-    source ~/.fzf.bash
-    source ~/.tsny.fzf
-fi
-
 ## New line for prompt
 PS1="$PS1\n " 
+PS1="$PS1:\[\e[f\e[K\]"
 
-
-## Check for exa
-if command_exists exa;  then
-    alias ls="exa"
-    alias ll="exa -l"
-fi
+alias ls=exa
 
 export PATH
+
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="~/.fzf/bin:$PATH"
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
