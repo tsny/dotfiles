@@ -24,6 +24,8 @@ PROMPT_COMMAND="echo"
 ### Bindings
 
 bind '"\C-l":"clear\n"'
+bind '"\C-k":"ls -la\n"'
+bind '"\C-e":"vim $(fzf)\n"'
 
 ### Colors
 
@@ -94,6 +96,10 @@ alias dkflush2='docker rmi $(docker images --filter "dangling=true" -q --no-trun
 alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"'
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 alias dksa="docker stop $(docker ps -a -q)"
+
+# AWS
+
+alias ebs='aws elasticbeanstalk'
 
 ## Load custom fzf settings
 
