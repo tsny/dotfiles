@@ -6,7 +6,6 @@ touch ~/.shell_bookmarks
 
 mkdir -p ~/.config/vifm/colors
 mkdir ~/dev
-mkdir ~/screenshots
 
 cp -R .vim ~/.vim
 

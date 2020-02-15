@@ -11,7 +11,7 @@ set nocompatible
 set modelines=0
 
 " auto change dir
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 " Setting default shell in windows
 if has('win32unix') || has('win32')
@@ -380,6 +380,9 @@ au InsertLeave * hi statusline guibg=lightblue ctermfg=Black ctermbg=cyan
 hi statusline guibg=lightblue ctermbg=cyan guibg=lightblue ctermfg=Black 
 
 set rtp+=~/.fzf
+
+" Helper for tsv files
+au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 tabstop=20
 
 " Vim Plug
 call plug#begin('~/.vim/plugged')

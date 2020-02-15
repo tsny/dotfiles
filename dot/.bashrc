@@ -23,7 +23,9 @@ PROMPT_COMMAND="echo"
 
 ### Bindings
 
-bind -x '"\C-l":"clear"'
+bind '"\C-l":"clear\n"'
+bind '"\C-k":"ls -la\n"'
+bind '"\C-e":"vim $(fzf)\n"'
 
 ### Colors
 
@@ -95,6 +97,10 @@ alias dkt='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t
 alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 alias dksa="docker stop $(docker ps -a -q)"
 
+# AWS
+
+alias ebs='aws elasticbeanstalk'
+
 ## Load custom fzf settings
 
 ## FZF
@@ -120,9 +126,9 @@ PATH=~/.cargo/bin:$PATH
 
 ## New line for prompt
 PS1="$PS1\n " 
+PS1="$PS1:\[\e[f\e[K\]"
 
-## Check for exa
-if command_exists exa;  then
+if exa -v; then
     alias ls="exa"
     alias ll="exa -l"
 fi
@@ -131,4 +137,5 @@ export PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="~/.fzf/bin:$PATH"
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
