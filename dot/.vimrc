@@ -10,10 +10,6 @@ set synmaxcol=1000
 set nocompatible
 set modelines=0
 
-" Ubuntu Terminal
-set term=screen-256color
-set t_ut=
-
 " auto change dir
 autocmd BufEnter * silent! lcd %:p:h
 
@@ -108,7 +104,9 @@ endfunction
 
 " Bare necessities
 
+nnoremap \ :!!<CR>
 syntax on
+
 inoremap <special> jk <ESC>
 inoremap <special> kj <ESC>
 inoremap <special> jj <ESC>
@@ -129,6 +127,7 @@ nnoremap K o<Esc>k
 
 " Format file
 map <F7> gg=G<C-o><C-o>
+map <leader>fj :%!jq .<CR>
 
 " Terminal binding that auto sources .bash_profile
 "nnoremap <leader>z :term<CR>source $HOME/.bash_profile<CR>
@@ -295,7 +294,6 @@ set smartindent
 
 set title
 
-
 " Removes startup message
 set shortmess=Ia
 
@@ -388,4 +386,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'bluz71/vim-nightfly-guicolors'
 call plug#end()
+
+set termguicolors
+colorscheme nightfly

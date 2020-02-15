@@ -23,7 +23,7 @@ PROMPT_COMMAND="echo"
 
 ### Bindings
 
-bind -x '"\C-k":"clear"'
+bind -x '"\C-l":"clear"'
 
 ### Colors
 
