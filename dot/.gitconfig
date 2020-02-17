@@ -1,14 +1,11 @@
 [user]
     name = tsny
-    email = Taylor.W.Snyder@centene.com
-    username = CN168865
+    email = tsny700@gmail.com
+    username = tsny
 
 [core]
 	editor = vim
 	autocrlf = input
 
-[web]
-    browser = google-chrome
-    editor = 'vim'
 [push]
 	default = current

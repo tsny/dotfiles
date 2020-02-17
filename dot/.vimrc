@@ -147,7 +147,7 @@ nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
 nnoremap <leader>oe :Vexplore<CR>
 
 " Fzf
-nnoremap <c-p> :Buffers<cr>
+nnoremap <c-p> :Files<cr>
 nnoremap <c-h> :History<cr>
 nnoremap H :History<cr>
 nnoremap <leader>b :Buffers<cr>

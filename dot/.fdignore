@@ -5,3 +5,5 @@ Movies/
 Public/
 Library/
 AndroidStudioProjects/
+*.pyc
+*.class
