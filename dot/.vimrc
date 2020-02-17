@@ -387,6 +387,7 @@ au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 ta
 " Vim Plug
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
+Plug 'dag/vim-fish'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'bluz71/vim-nightfly-guicolors'
