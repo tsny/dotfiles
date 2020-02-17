@@ -57,10 +57,7 @@ fi
 ### Work/Home 
 
 if [ -f ~/tc_bash.sh ]; then
-    echo "Loading work settings..."
     source ~/tc_bash.sh
-else 
-    echo "Loading home settings..."
 fi
 
 ## Rust
