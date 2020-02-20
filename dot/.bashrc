@@ -24,7 +24,7 @@ PROMPT_COMMAND="echo"
 ### Bindings
 
 bind '"\C-l":"clear\n"'
-bind '"\C-k":"ls -la\n"'
+bind '"\C-k":"ls -l\n"'
 
 ### Colors
 

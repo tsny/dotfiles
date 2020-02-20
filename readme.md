@@ -22,8 +22,8 @@ sh bootstrap.sh
 
 ## TODO
 
-1. Move base installation to home dir  
-2. Make bootstrap load files in folders
+- Make a .conf folder that should house most of our supplementary config files like
+(alias.sh, fzf.sh, etc)
 
 ## Plugins
 * fzf-vim
