@@ -318,7 +318,6 @@ if &t_Co >= 256 || has("gui_running")
     silent! colorscheme atom-dark-256
 endif
 
-
 " Moves the window rather than the cursor
 " set scrolloff=20
 
@@ -391,6 +390,8 @@ Plug 'dag/vim-fish'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " Enable colors in tmux
@@ -400,3 +401,16 @@ if exists('+termguicolors')
     set termguicolors
     colorscheme nightfly
 endif
+
+" Testing rust
+nnoremap <F4> :!clear<CR>:RustRun<CR>
+
+" Syntastic stuff
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
