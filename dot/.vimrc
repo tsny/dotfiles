@@ -383,16 +383,28 @@ set rtp+=~/.fzf
 " Helper for tsv files
 au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 tabstop=20
 
-" Vim Plug
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf.vim'
-Plug 'dag/vim-fish'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'bluz71/vim-nightfly-guicolors'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-syntastic/syntastic'
-call plug#end()
+" Vim Plug if it exists
+if !empty(glob("~/.vim/plugged"))
+    call plug#begin('~/.vim/plugged')
+    Plug 'junegunn/fzf.vim'
+    Plug 'dag/vim-fish'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'bluz71/vim-nightfly-guicolors'
+    Plug 'rust-lang/rust.vim'
+    Plug 'vim-syntastic/syntastic'
+    call plug#end()
+
+    " Syntastic stuff
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+endif
 
 " Enable colors in tmux
 if exists('+termguicolors')
@@ -404,13 +416,3 @@ endif
 
 " Testing rust
 nnoremap <F4> :!clear<CR>:RustRun<CR>
-
-" Syntastic stuff
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
