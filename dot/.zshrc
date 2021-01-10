@@ -12,17 +12,6 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git)
 
-# show which vim mode we are in
-precmd() {
-  RPROMPT=""
-}
-zle-keymap-select() {
-  RPROMPT=""
-  [[ $KEYMAP = vicmd ]] && RPROMPT="(COMMAND MODE)"
-  () { return $__prompt_status }
-  zle reset-prompt
-}
-
 source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 

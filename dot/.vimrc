@@ -135,6 +135,7 @@ nnoremap <leader>tz :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR
 
 " Quickly get into .vimrc
 nnoremap <leader>ev :tabnew<cr>:e $MYVIMRC<cr>
+nnoremap <leader>ez :tabnew<cr>:e ~/.zshrc<cr>
 
 " Begins open vsplit command
 nnoremap <leader>vs :vsp<cr>
@@ -411,7 +412,7 @@ if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
-    colorscheme nightfly
+    colorscheme desert
 endif
 
 " Testing rust
