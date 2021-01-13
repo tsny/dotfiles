@@ -391,7 +391,6 @@ if !empty(glob("~/.vim/plugged"))
     Plug 'franbach/miramare'
     "Plug 'nathanaelkane/vim-indent-guides'
     call plug#end()
-endif
 
     " Syntastic stuff
     set statusline+=%#warningmsg#
