@@ -107,9 +107,9 @@ endfunction
 nnoremap \ :!!<CR>
 syntax on
 
+nnoremap <leader>l :RustRun<CR>
+
 inoremap <special> jk <ESC>
-inoremap <special> kj <ESC>
-inoremap <special> jj <ESC>
 let mapleader = ","
 nnoremap ; :
 vnoremap ; :
@@ -307,16 +307,16 @@ set shortmess=Ia
 
 " Setting guifont, defaults to lesser-quality fonts if the previously tried ones don't exist
 if has("gui_running")
-    silent! set guifont=Office\ Code\ Pro:h14
+    silent! set guifont=Office\ Code\ Pro:h12
     set columns=150
     set lines=50
 endif
 
 " Setting colorscheme, degrades/defaults in a similar way to guifont
-if &t_Co >= 256 || has("gui_running")
-    colorscheme desert
-    silent! colorscheme atom-dark-256
-endif
+"if &t_Co >= 256 || has("gui_running")
+    "colorscheme desert
+    "silent! colorscheme atom-dark-256
+"endif
 
 " Moves the window rather than the cursor
 " set scrolloff=20
@@ -384,35 +384,12 @@ set rtp+=~/.fzf
 au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 tabstop=20
 
 " Vim Plug if it exists
-if !empty(glob("~/.vim/plugged"))
+"if !empty(glob("~/.vim/plugged"))
     call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
-    Plug 'dag/vim-fish'
-    Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plug 'bluz71/vim-nightfly-guicolors'
-    Plug 'rust-lang/rust.vim'
-    Plug 'vim-syntastic/syntastic'
+    Plug 'franbach/miramare'
+    "Plug 'nathanaelkane/vim-indent-guides'
     call plug#end()
+"endif
 
-    " Syntastic stuff
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-endif
-
-" Enable colors in tmux
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-    colorscheme nightfly
-endif
-
-" Testing rust
-nnoremap <F4> :!clear<CR>:RustRun<CR>
+colorscheme slate

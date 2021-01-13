@@ -1,5 +1,3 @@
-echo "Loading aliases..."
-
 # Programming
 
 alias py="python3"

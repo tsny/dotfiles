@@ -1,3 +1,4 @@
+**/cacerts.pem
 # Default #
 *.iml
     
@@ -38,3 +39,4 @@ Thumbs.db
 
 Music/
 Library/
+ca-dev.cer

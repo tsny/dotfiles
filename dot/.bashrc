@@ -64,19 +64,10 @@ fi
 
 ## Rust
 PATH=~/.cargo/bin:$PATH
-
-## New line for prompt
-PS1="$PS1\n " 
-PS1="$PS1:\[\e[f\e[K\]"
-
-if exa -v; then
-    alias ls="exa"
-    alias ll="exa -l"
-fi
-
-export PATH
-
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+PATH="/opt/oracle/instantclient_12_2:$PATH"
 export PATH="~/.fzf/bin:$PATH"
+export DYLD_LIBRARY_PATH="/opt/oracle/instantclient_12_2"
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+source /Users/cn168865/dev/obsidian-tools/oo-k8s.sh
