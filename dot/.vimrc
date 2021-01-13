@@ -135,6 +135,7 @@ nnoremap <leader>tz :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR
 
 " Quickly get into .vimrc
 nnoremap <leader>ev :tabnew<cr>:e $MYVIMRC<cr>
+nnoremap <leader>ez :tabnew<cr>:e ~/.zshrc<cr>
 
 " Begins open vsplit command
 nnoremap <leader>vs :vsp<cr>
@@ -384,12 +385,29 @@ set rtp+=~/.fzf
 au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 tabstop=20
 
 " Vim Plug if it exists
-"if !empty(glob("~/.vim/plugged"))
+if !empty(glob("~/.vim/plugged"))
     call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'franbach/miramare'
     "Plug 'nathanaelkane/vim-indent-guides'
     call plug#end()
-"endif
+endif
 
-colorscheme slate
+    " Syntastic stuff
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+endif
+
+" Enable colors in tmux
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+    colorscheme desert
+endif
