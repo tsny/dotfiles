@@ -24,7 +24,6 @@ PROMPT_COMMAND="echo"
 ### Bindings
 
 bind '"\C-l":"clear\n"'
-#bind '"\C-k":"ls -l\n"'
 bind -x '"\C-k": "ls -l"'
 bind '"\C-n":"\u0001b[A"'
 
@@ -56,18 +55,4 @@ if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
 fi
 
-### Work/Home 
-
-if [ -f ~/tc_bash.sh ]; then
-    source ~/tc_bash.sh
-fi
-
-## Rust
-PATH=~/.cargo/bin:$PATH
-PATH="$HOME/.cargo/bin:$PATH"
-PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-PATH="/opt/oracle/instantclient_12_2:$PATH"
 export PATH="~/.fzf/bin:$PATH"
-export DYLD_LIBRARY_PATH="/opt/oracle/instantclient_12_2"
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-source /Users/cn168865/dev/obsidian-tools/oo-k8s.sh
