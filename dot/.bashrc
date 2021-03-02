@@ -44,8 +44,8 @@ else
     alias e="start gvim --remote-tab-silent"
 fi
 
-if [ -f ~/alias.sh ]; then
-    source ~/alias.sh
+if [ -f ~/.alias.sh ]; then
+    source ~/.alias.sh
 fi
 
 ## Load custom fzf settings
