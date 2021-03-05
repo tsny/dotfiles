@@ -51,8 +51,7 @@ fi
 ## Load custom fzf settings
 
 ## FZF
-if [ -f ~/.fzf.bash ]; then
-    source ~/.fzf.bash
-fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/tsny-fzf.sh ] && source ~/tsny-fzf.sh
 
 export PATH="~/.fzf/bin:$PATH"

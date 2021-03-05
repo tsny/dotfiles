@@ -110,6 +110,7 @@ syntax on
 nnoremap <leader>l :RustRun<CR>
 
 inoremap <special> jk <ESC>
+inoremap <special> <C-k> <ESC>
 let mapleader = ","
 nnoremap ; :
 vnoremap ; :
@@ -393,14 +394,14 @@ if !empty(glob("~/.vim/plugged"))
     call plug#end()
 
     " Syntastic stuff
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{SyntasticStatuslineFlag()}
+    "set statusline+=%*
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
+    "let g:syntastic_always_populate_loc_list = 1
+    "let g:syntastic_auto_loc_list = 1
+    "let g:syntastic_check_on_open = 1
+    "let g:syntastic_check_on_wq = 0
 endif
 
 " Enable colors in tmux
