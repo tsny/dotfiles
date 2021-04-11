@@ -25,6 +25,3 @@ printf "\nRestarting bash...\n"
 git config --global user.name "tsny"
 git config --global user.email tsny700@gmail.com
 git config --global core.editor vim
-
-
-exec bash
