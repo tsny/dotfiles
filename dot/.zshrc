@@ -15,7 +15,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 
-source ~/zsh-vim.zsh
+source ~/.zsh-vim.zsh
 source ~/alias.sh
 
 export GOPATH=~/dev/go
