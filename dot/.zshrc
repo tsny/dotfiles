@@ -21,3 +21,4 @@ source ~/alias.sh
 export GOPATH=~/dev/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.tsny-fzf.zsh ] && source ~/.tsny-fzf.zsh
