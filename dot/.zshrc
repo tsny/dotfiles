@@ -16,7 +16,8 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 
 source ~/.zsh-vim.zsh
-source ~/alias.sh
+source ~/.alias.sh
+PATH=$PATH:~/.local/bin
 
 export GOPATH=~/dev/go
 
