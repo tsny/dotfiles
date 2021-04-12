@@ -3,7 +3,7 @@ alias py="python3"
 alias gorm="go run main.go"
 
 # Misc
-alias ll="ls -l"
+alias ll="ls -la"
 alias ..="cd .."
 alias fm="vifm"
 
