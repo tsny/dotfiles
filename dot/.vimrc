@@ -151,6 +151,7 @@ nnoremap <leader>oe :Vexplore<CR>
 " Fzf
 nnoremap <c-p> :Files<cr>
 nnoremap <c-h> :History<cr>
+nnoremap <leader>ff :Files ~/<cr>
 nnoremap H :History<cr>
 nnoremap <leader>b :Buffers<cr>
 
@@ -265,7 +266,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Folding
 set foldmethod=indent
 set foldlevel=99
-nnoremap <leader>ff za
+"nnoremap <leader>ff za
 
 " Copy file details
 nnoremap <leader>cfp :call CopyFilePath()<CR>
