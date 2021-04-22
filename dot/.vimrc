@@ -387,23 +387,10 @@ set rtp+=~/.fzf
 au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 tabstop=20
 
 " Vim Plug if it exists
-if !empty(glob("~/.vim/plugged"))
-    call plug#begin('~/.vim/plugged')
-    Plug 'junegunn/fzf.vim'
-    Plug 'franbach/miramare'
-    "Plug 'nathanaelkane/vim-indent-guides'
-    call plug#end()
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf.vim'
+call plug#end()
 
-    " Syntastic stuff
-    "set statusline+=%#warningmsg#
-    "set statusline+=%{SyntasticStatuslineFlag()}
-    "set statusline+=%*
-
-    "let g:syntastic_always_populate_loc_list = 1
-    "let g:syntastic_auto_loc_list = 1
-    "let g:syntastic_check_on_open = 1
-    "let g:syntastic_check_on_wq = 0
-endif
 
 " Enable colors in tmux
 if exists('+termguicolors')

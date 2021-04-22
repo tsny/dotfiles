@@ -1,6 +1,5 @@
 [user]
-	name = tsny
-	email = tsny700@gmail.com
+	name = Taylor Snyder
+	email = tasnyder@paypal.com
 [core]
 	editor = vim
-    autocrlf = true
