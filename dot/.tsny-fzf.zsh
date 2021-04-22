@@ -5,22 +5,17 @@ export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border"
 
 ### Bookmark Functions
 bm() {
-    echo "$curr_dir" >> ~/.shell_bookmarks 
+    pwd >> ~/.shell_bookmarks 
 }
 
 ### go to booksmarks
 gobm() {
-    local dest_dir="$(cat ~/.shell_bookmarks | fzf )"
-    if [[ $dest_dir != '' ]]; then
-        cd "$dest_dir"
-    fi
+    cd $(cat ~/.shell_bookmarks | fzf)
 }
 
 # ff - cd to selected directory
 ff() {
-    local dir
-        dir=$(fd --type d | fzf) &&
-        cd "$dir"
+    cd $(fd --type d | fzf)
 }
 
 # fbr - checkout git branch
