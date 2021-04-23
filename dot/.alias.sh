@@ -26,6 +26,7 @@ alias gst="git status"
 alias giff="git diff"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+# Fetches all remote branches so they can be fed into fzf for easy navigation 
 function gfar() {
     for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
 }
