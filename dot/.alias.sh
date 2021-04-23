@@ -1,17 +1,13 @@
 # Programming
 alias py="python3"
-alias gorm="go run main.go"
 
 # Misc
 alias ll="ls -la"
 alias ..="cd .."
-alias fm="vifm"
 
-alias reload="exec bash"
 alias lvl="echo $SHLVL"
 alias ydla="youtube-dl -x --audio-format mp3"
 
-alias ogc="open -a 'Google Chrome'"
 alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
 alias ppath="tr ':' '\n' <<< \"$PATH\""
 
@@ -29,6 +25,12 @@ alias gps="git push"
 alias gst="git status"
 alias giff="git diff"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+function gfa() {
+    for remote in `git branch -r`; 
+        do git branch --track ${remote#origin/} $remote; 
+    done
+}
 
 # Docker
 if command -v docker &> /dev/null 
