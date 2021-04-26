@@ -26,22 +26,24 @@ sh bootstrap.sh
 (alias.sh, fzf.sh, etc)
 
 ## Plugins
-* fzf-vim
 
-FZF Install
+### FZF Install
 ```
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
+### Powerline
 [Powerline 9k](https://gist.github.com/kevin-smets/8568070)
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-Then edit your ~/.zshrc and set ZSH_THEME="powerlevel10k/powerlevel10k". Once you do so, when you start a new terminal session, the Powerlevel10 configure wizard will be launched to set your prompt, beware, there are many many options!
+`git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k`
+Then edit your ~/.zshrc and set `ZSH_THEME="powerlevel10k/powerlevel10k"`
+Once you do so, when you start a new terminal session, the Powerlevel10 configure wizard will be launched to set your prompt, beware, there are many many options!
 
+### ZSH Autocomplete
 [zsh-autocompletions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 
 
-Vim Plug install on Unix
+### VIM PLUG
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
