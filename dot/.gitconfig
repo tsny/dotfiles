@@ -3,3 +3,5 @@
 	email = tasnyder@paypal.com
 [core]
 	editor = vim
+[url "git@github.paypal.com:"]
+	insteadOf = https://github.paypal.com/
