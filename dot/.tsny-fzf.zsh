@@ -2,6 +2,12 @@ export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_mo
 export FZF_ALT_C_COMMAND="fd --type d"
 export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border"
 
+## fzf stuff
+[[ ! -f ~/usr/share/fzf/completion.zsh ]] || source ~/usr/share/fzf/completion.zsh
+[[ ! -f ~/usr/share/fzf/key-bindings.zsh ]] || source ~/usr/share/fzf/key-bindings.zsh
+[[ ! -f ~/.fzf/shell/key-bindings.zsh ]] || source ~/.fzf/shell/key-bindings.zsh
+[[ ! -f ~/.fzf/shell/completion.zsh ]] || source ~/.fzf/shell/completion.zsh
+
 ### Bookmark Functions
 bm() {
     pwd >> ~/.shell_bookmarks 
