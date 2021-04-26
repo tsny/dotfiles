@@ -34,6 +34,12 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
+[Powerline 9k](https://gist.github.com/kevin-smets/8568070)
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+Then edit your ~/.zshrc and set ZSH_THEME="powerlevel10k/powerlevel10k". Once you do so, when you start a new terminal session, the Powerlevel10 configure wizard will be launched to set your prompt, beware, there are many many options!
+
+
+
 Vim Plug install on Unix
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
