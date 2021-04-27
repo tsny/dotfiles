@@ -20,6 +20,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-autosuggestions)
 
+# bind key to run last command
+bindkey -s '^o' '!!\n\n' 
+
 source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 

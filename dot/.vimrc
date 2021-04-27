@@ -166,6 +166,7 @@ nnoremap <leader>so :so $MYVIMRC<CR>
 
 " Force quit fast
 nnoremap <leader>q :q!<CR>
+nnoremap <c-q>q :q!<CR>
 
 " Faster saving
 nnoremap <leader>w :w<CR>
