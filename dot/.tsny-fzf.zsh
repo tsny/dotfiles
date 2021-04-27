@@ -2,25 +2,29 @@ export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_mo
 export FZF_ALT_C_COMMAND="fd --type d"
 export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border"
 
-## fzf stuff
+## fzf stuff, check a few places for config files
 [[ ! -f ~/usr/share/fzf/completion.zsh ]] || source ~/usr/share/fzf/completion.zsh
 [[ ! -f ~/usr/share/fzf/key-bindings.zsh ]] || source ~/usr/share/fzf/key-bindings.zsh
 [[ ! -f ~/.fzf/shell/key-bindings.zsh ]] || source ~/.fzf/shell/key-bindings.zsh
 [[ ! -f ~/.fzf/shell/completion.zsh ]] || source ~/.fzf/shell/completion.zsh
+[[ ! -f /usr/local/Cellar/fzf/0.27.0/shell/completion.zsh ]] || source /usr/local/Cellar/fzf/0.27.0/shell/completion.zsh
+[[ ! -f /usr/local/Cellar/fzf/0.27.0/shell/key-bindings.zsh ]] || source /usr/local/Cellar/fzf/0.27.0/shell/key-bindings.zsh
 
-### Bookmark Functions
+# bm - bookmark
 bm() {
     pwd >> ~/.shell_bookmarks 
 }
 
-### go to booksmarks
+# gobm -  go to bookmark
 gobm() {
-    cd $(cat ~/.shell_bookmarks | fzf)
+    local dir=$(cat ~/.shell_bookmarks | fzf)
+    [[ -d $dir ]] && cd $dir
 }
 
 # ff - cd to selected directory
 ff() {
-    cd $(fd --type d | fzf)
+    local dir=$(fd --type d | fzf)
+    [[ -d $dir ]] && cd $dir
 }
 
 # fbr - checkout git branch
@@ -29,15 +33,15 @@ fbr() {
     branches=$(git --no-pager branch -vv) &&
         branch=$(echo "$branches" | fzf +m) &&
         git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-    }
-
-# _fda - including hidden directories
-fda() {
-    local dir
-    dir="$(find "${1:-.}" -type d 2> /dev/null \
-        | fzf +m)" || return cd "$dir" || return
 }
 
+# fev - find and edit w/ vim
+fev() {
+    local file=$(fd -t file | fzf)
+    [[ -f $file ]] && vim $file
+}
+
+# bind some keys to these funcs
 bindkey -s '^f' 'ff\n'
 bindkey -s '^b' 'gobm\n'
-bindkey -s '^e' 'vim $(fzf)\n'
+bindkey -s '^e' 'fev\n'
