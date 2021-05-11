@@ -28,11 +28,17 @@ export EDITOR='vim'
 
 source ~/.zsh-vim.zsh
 source ~/.alias.sh
-PATH=$PATH:~/.local/bin
+
+# Load work related zsh
+[[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
+
+export PATH=~/dev/go/bin:$PATH
+
+# reloads zshrc
+alias reload="source ~/.zshrc"
 
 export GOPATH=~/dev/go
 export GOBIN=/usr/local/bin
-export GOPRIVATE=github.paypal.com
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.tsny-fzf.zsh ] && source ~/.tsny-fzf.zsh

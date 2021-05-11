@@ -319,8 +319,8 @@ endif
 " Setting colorscheme, degrades/defaults in a similar way to guifont
 "if &t_Co >= 256 || has("gui_running")
     "colorscheme desert
-    "silent! colorscheme atom-dark-256
 "endif
+silent! colorscheme atom-dark-256
 
 " Moves the window rather than the cursor
 " set scrolloff=20
@@ -377,10 +377,10 @@ endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertChange * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=lightblue ctermfg=Black ctermbg=cyan
+au InsertLeave * hi statusline guibg=lightblue ctermfg=Black ctermbg=lightgray
 
 "Default the status bar to lightblue
-hi statusline guibg=lightblue ctermbg=cyan guibg=lightblue ctermfg=Black 
+hi statusline guibg=lightblue ctermbg=lightgray guibg=lightblue ctermfg=Black 
 
 set rtp+=~/.fzf
 
