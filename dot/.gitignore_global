@@ -40,3 +40,6 @@ Thumbs.db
 Music/
 Library/
 ca-dev.cer
+kms.token
+dev-run.sh
+hermes-spec.yml

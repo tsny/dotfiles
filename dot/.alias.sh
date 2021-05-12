@@ -2,7 +2,8 @@
 alias py="python3"
 
 # Misc
-alias ll="ls -la"
+alias ll="gls --color=always -l --group-directories-first"
+alias ls="ll"
 alias ..="cd .."
 
 alias lvl="echo $SHLVL"
@@ -20,10 +21,11 @@ alias gcb="git checkout -b"
 alias gco="git checkout"
 alias guc="git add -u; git commit"
 alias guf="git add -A; git commit -m 'Fast update commit'"
+alias gup="git pull upstream develop"
 alias gac="git add -A; git commit"
 alias gps="git push"
 alias gst="git status"
-alias giff="git diff"
+alias giff="git diff -- . ':(exclude)*_gen.go'"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 # Fetches all remote branches so they can be fed into fzf for easy navigation 
