@@ -38,6 +38,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
+### [Gruvbox](https://github.com/gruvbox-community/gruvbox/wiki/Installation)
+
+Nice theme for Vim
+
+### [Tmux manager](https://github.com/tmux-plugins/tpm)
+
+Plugin manager for tmux
+
 ### [Powerline](https://gist.github.com/kevin-smets/8568070)
 
 `git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k`

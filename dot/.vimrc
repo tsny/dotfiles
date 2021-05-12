@@ -403,4 +403,5 @@ if exists('+termguicolors')
 endif
 
 colorscheme gruvbox
+set background=dark
 
