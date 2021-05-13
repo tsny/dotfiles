@@ -55,6 +55,7 @@ Once you do so, when you start a new terminal session, the Powerlevel10 configur
 
 ### [ZSH Autocomplete](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 Self-explanatory
+`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
 
 ### [Vim Plug](https://github.com/junegunn/vim-plug)
 Package manager for Vim extensions
