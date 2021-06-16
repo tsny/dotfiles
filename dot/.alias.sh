@@ -2,7 +2,7 @@
 alias py="python3"
 
 # Misc
-alias ll="gls --color=always -l --group-directories-first"
+alias ll="ls -la --color"
 alias ls="ll"
 alias ..="cd .."
 

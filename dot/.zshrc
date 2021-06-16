@@ -36,6 +36,9 @@ source ~/.alias.sh
 # Load work related zsh
 [[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
 
+export PATH=~/dev/go/bin:$PATH
+export PATH=~/.local/bin:$PATH
+
 # reloads zshrc
 alias reload="source ~/.zshrc"
 

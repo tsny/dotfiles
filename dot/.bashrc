@@ -1,15 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-echo  
-echo  "    __                   "
-echo  "   / /__________  __  __ "
-echo  "  / __/ ___/ __ \/ / / / "
-echo  " / /_(__  ) / / / /_/ /  "
-echo  " \__/____/_/ /_/\___ /   "
-echo  "               /____/    "
-echo  
-
 ### VIM Movement
 
 export EDITOR=VIM
@@ -47,8 +38,6 @@ fi
 if [ -f ~/.alias.sh ]; then
     source ~/.alias.sh
 fi
-
-## Load custom fzf settings
 
 ## FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

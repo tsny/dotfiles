@@ -27,6 +27,7 @@ sh bootstrap.sh
 
 - Make a .conf folder that should house most of our supplementary config files like
 (alias.sh, fzf.sh, etc)
+- Bootstrap could check if these things are installed and try to install them
 
 ## Plugins
 
@@ -37,6 +38,13 @@ Fuzzy finder. Literally the best application ever written
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
+
+Either
+`brew install fd`
+or (installs and makes link to fd)
+`sudo apt-get install fd-find; mkdir ~/.local; mkdir ~/.local/bin; ln -s $(which fdfind) ~/.local/bin/fd`
+
+Ensure your path has `~/.local/bin` in it 
 
 ### [Gruvbox](https://github.com/gruvbox-community/gruvbox/wiki/Installation)
 
@@ -55,6 +63,8 @@ Once you do so, when you start a new terminal session, the Powerlevel10 configur
 
 ### [ZSH Autocomplete](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 Self-explanatory
+
+`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
 
 ### [Vim Plug](https://github.com/junegunn/vim-plug)
 Package manager for Vim extensions
