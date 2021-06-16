@@ -13,7 +13,6 @@ alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
 alias ppath="tr ':' '\n' <<< \"$PATH\""
 
 # Git 
-alias gup="git add -u"
 alias gpl="git pull"
 alias gc="git commit"
 alias gac="git commit -a"
@@ -21,12 +20,17 @@ alias gcb="git checkout -b"
 alias gco="git checkout"
 alias guc="git add -u; git commit"
 alias guf="git add -A; git commit -m 'Fast update commit'"
-alias gup="git pull upstream develop"
+alias gcd="git checkout develop"
+
 alias gac="git add -A; git commit"
 alias gps="git push"
 alias gst="git status"
 alias giff="git diff -- . ':(exclude)*_gen.go'"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# PayPal specific
+alias gup="git pull upstream develop"
+alias gupr="git pull --rebase upstream develop"
 
 # Fetches all remote branches so they can be fed into fzf for easy navigation 
 function gfar() {

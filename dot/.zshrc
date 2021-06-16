@@ -11,17 +11,21 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-autosuggestions)
 
 # bind key to run last command
 bindkey -s '^o' '!!\n\n' 
+
+# C-M-u: up-directory
+up-directory() {
+     builtin cd .. 
+      BUFFER=
+      zle accept-line
+}
+zle -N up-directory
+bindkey '^u' up-directory
 
 source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
@@ -32,13 +36,14 @@ source ~/.alias.sh
 # Load work related zsh
 [[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
 
-export PATH=~/dev/go/bin:$PATH
-
 # reloads zshrc
 alias reload="source ~/.zshrc"
 
+#export GOBIN=/usr/local/bin
 export GOPATH=~/dev/go
-export GOBIN=/usr/local/bin
+
+export PATH=~/dev/go/bin:$PATH
+export PATH="/Users/tasnyder/.gimme/versions/go1.14.6.darwin.amd64/bin:${PATH}"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.tsny-fzf.zsh ] && source ~/.tsny-fzf.zsh

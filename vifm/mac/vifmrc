@@ -337,6 +337,8 @@ set viewcolumns=-{name}..,16{mtime},7{}.
 
 " Sample mappings
 
+nnoremap ; :
+
 " Start shell in current directory
 nnoremap s :shell<cr>
 

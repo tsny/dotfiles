@@ -43,3 +43,5 @@ ca-dev.cer
 kms.token
 dev-run.sh
 hermes-spec.yml
+
+settings.json
