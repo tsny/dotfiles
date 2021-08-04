@@ -12,6 +12,13 @@ This isn't really how many people do it but as of right now that's just how it i
 
 ## Installation
 
+Full install
+```
+git clone https://github.com/tsny/dotfiles.git ~/dev/dotfiles;
+cd ~/dev/dotfiles;
+sh bootstrap.sh;
+```
+
 Clone the repo
 ```
 git clone https://github.com/tsny/dotfiles.git ~/dev/dotfiles
