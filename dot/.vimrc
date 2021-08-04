@@ -402,6 +402,6 @@ if exists('+termguicolors')
     colorscheme desert
 endif
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 set background=dark
 
