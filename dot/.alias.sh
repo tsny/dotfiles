@@ -1,6 +1,3 @@
-# Programming
-alias py="python3"
-
 # Misc
 alias ll="ls -la --color"
 alias ls="ll"
@@ -10,7 +7,7 @@ alias lvl="echo $SHLVL"
 alias ydla="youtube-dl -x --audio-format mp3"
 
 alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
-alias ppath="tr ':' '\n' <<< \"$PATH\""
+alias ppath='printf "%s\n" $path'
 
 # Git 
 alias gpl="git pull"
