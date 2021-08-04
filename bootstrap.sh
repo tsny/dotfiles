@@ -19,10 +19,10 @@ do
     ln -sv $dotDir/$dotfile ~
 done
 
-
-echo "Initting git"
-git config --global user.name "tsny"
-git config --global user.email tsny700@gmail.com
-git config --global core.editor vim
+if [ ! -d "~/.vim/autoload" ]; then
+    echo "getting vim plug"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 echo "Finished setup..."

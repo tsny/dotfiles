@@ -390,8 +390,8 @@ au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 ta
 " Vim Plug if it exists
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'gruvbox-community/gruvbox'
+Plug 'mtdl9/vim-log-highlighting'
 call plug#end()
 
 " Enable colors in tmux
