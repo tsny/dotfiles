@@ -1,0 +1,361 @@
+{
+    "sync.gist": "9f5ab3bb4a22ab9e5c278f9f7e68e208",
+    "go.autocompleteUnimportedPackages": true,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.overrideCopy": false,
+    "vim.foldfix": true,
+    "vim.easymotionMarkerForegroundColorOneChar": "white",
+    "vim.easymotionMarkerBackgroundColor": "black",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinitionAside"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "v"
+            ],
+            "after": [
+                "<esc>"
+            ]
+        },
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                ":w"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "f"
+            ],
+            "commands": [
+                "go.test.cursor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "commands": [
+                "workbench.action.debug.start"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "p"
+            ],
+            "commands": [
+                "go.test.package"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                ":q"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "v",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.splitEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "<leader>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "after": [
+                "o",
+                "<Esc>",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                "v"
+            ],
+            "after": [
+                "V"
+            ]
+        },
+        {
+            "before": [
+                "V"
+            ],
+            "after": [
+                "v"
+            ]
+        },
+        {
+            "before": [
+                "f"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "s"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m"
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ],
+            "when": [
+                "editor.hasFocus"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e",
+                "v"
+            ],
+            "commands": [
+                "workbench.action.openSettingsJson"
+            ]
+        },
+        {
+            "before": [
+                "0"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "$"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n"
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ],
+            "when": [
+                "editor.hasFocus"
+            ]
+        },
+        {
+            "before": [
+                "C-h"
+            ],
+            "commands": [
+                "workbench.action.navigateLeft"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ],
+            "when": [
+                "editor.hasFocus"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ],
+            "when": [
+                "editor.hasFocus"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands":[ "editor.action.showHover"]
+        },
+        {
+            "before": [
+                "C-j"
+            ],
+            "commands": [
+                "workbench.action.navigateDown"
+            ],
+            "when": [
+                "!terminalFocus"
+            ]
+        },
+        {
+            "before": [
+                "C-k"
+            ],
+            "commands": [
+                "workbench.action.navigateUp"
+            ],
+            "when": [
+                "!terminalFocus"
+            ]
+        },
+        {
+            "before": [
+                "C-l"
+            ],
+            "commands": [
+                "workbench.action.navigateRight"
+            ]
+        }
+    ],
+    "vim.leader": ",",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-s>": false,
+        "<C-r>": false,
+        "<C-n>": false,
+        "<C-w>": false
+    },
+    "explorer.confirmDelete": false,
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 14,
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "git.autofetch": true,
+    "gruvboxMaterial.darkContrast": "hard",
+    "gruvboxMaterial.darkWorkbench": "flat",
+    "customizeUI.stylesheet": {
+        ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
+    },
+    "git.enableSmartCommit": true,
+    "git.allowForcePush": true,
+    "git.confirmForcePush": false,
+    "terminal.integrated.fontSize": 14,
+    "go.lintTool": "golangci-lint",
+    "editor.suggest.insertMode": "replace",
+    "[markdown]": {
+        "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
+    },
+    "redhat.telemetry.enabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.home": "/usr/local/opt/openjdk@11",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "explorer.confirmDragAndDrop": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.analysis.extraPaths": [
+        "./"
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "go.goroot": "/Users/tasnyder/.gimme/versions/go1.16.4.darwin.amd64",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "scm.inputFontSize": 12,
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.suggest.snippetsPreventQuickSuggestions": false
+    },
+    "emmet.excludeLanguages": [
+        "markdown",
+        "typescript"
+    ],
+    "emmet.showAbbreviationSuggestions": false,
+    "emmet.showExpandedAbbreviation": "never",
+    "window.zoomLevel": -1
+}
