@@ -13,8 +13,11 @@ alias ppath='printf "%s\n" $path'
 alias gpl="git pull"
 alias gc="git commit"
 alias gac="git commit -a"
+alias gca="git commit --amend"
 alias gcb="git checkout -b"
 alias gco="git checkout"
+alias gct="git checkout --theirs"
+alias gat="git checkout --theirs"
 alias guc="git add -u; git commit"
 alias guf="git add -A; git commit -m 'Fast update commit'"
 alias gcd="git checkout develop"
@@ -22,12 +25,18 @@ alias gcd="git checkout develop"
 alias gac="git add -A; git commit"
 alias gps="git push"
 alias gst="git status"
+# git diff
 alias giff="git diff -- . ':(exclude)*_gen.go'"
+# giff all
+alias giffa="git diff"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 # PayPal specific
-alias gup="git pull upstream develop"
-alias gupr="git pull --rebase upstream develop"
+alias gpud="git pull upstream develop"
+alias gpudr="git pull --rebase upstream develop"
+
+alias gmt="go mod tidy"
+alias gorm="go run main.go"
 
 # Fetches all remote branches so they can be fed into fzf for easy navigation 
 function gfar() {
