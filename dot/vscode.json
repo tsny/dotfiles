@@ -306,7 +306,8 @@
     "gruvboxMaterial.darkContrast": "hard",
     "gruvboxMaterial.darkWorkbench": "flat",
     "customizeUI.stylesheet": {
-        ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
+        ".quick-input-widget": "width: 75% !important;  left: 25%;"
+
     },
     "git.enableSmartCommit": true,
     "git.allowForcePush": true,
@@ -357,5 +358,5 @@
     ],
     "emmet.showAbbreviationSuggestions": false,
     "emmet.showExpandedAbbreviation": "never",
-    "window.zoomLevel": -1
+    "window.zoomLevel": -2
 }
