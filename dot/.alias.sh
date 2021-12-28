@@ -25,6 +25,8 @@ alias gst="git status"
 alias giff="git diff -- . ':(exclude)*_gen.go'"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+alias gorm="go run main.go"
+
 # PayPal specific
 alias gup="git pull upstream develop"
 alias gupr="git pull --rebase upstream develop"
