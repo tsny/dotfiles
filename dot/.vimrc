@@ -392,7 +392,20 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'mtdl9/vim-log-highlighting'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
+
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+
+nnoremap <leader>gb :GoBuild<CR>
+nnoremap <leader>gtf :GoTestFunc<CR>
+nnoremap <leader>gta :GoTest<CR>
+nnoremap <leader>gi :GoInfo<CR>
 
 " Enable colors in tmux
 if exists('+termguicolors')
