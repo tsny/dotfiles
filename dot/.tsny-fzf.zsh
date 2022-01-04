@@ -21,6 +21,12 @@ gobm() {
     [[ -d $dir ]] && cd $dir
 }
 
+# gossh -  go to ssh
+gossh() {
+    local ip=$(cat ~/.ssh-ips.sh | fzf)
+    ssh $ip
+}
+
 # ff - cd to selected directory
 ff() {
     local dir=$(fd --type d | fzf)

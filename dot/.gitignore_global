@@ -36,6 +36,7 @@ Thumbs.db
     
 .idea/
 .idea
+.vscode/
 
 Music/
 Library/
@@ -45,3 +46,4 @@ dev-run.sh
 hermes-spec.yml
 
 settings.json
+__debug_bin

@@ -274,6 +274,9 @@ nnoremap <leader>cfp :call CopyFilePath()<CR>
 nnoremap <leader>cfn :call CopyFileName()<CR>
 nnoremap <leader>cfd :call CopyDir()<CR>
 
+" Set json syntax and format it
+nnoremap <leader>fj :set syntax=json<CR> :execute '%!python -m json.tool'<CR>
+
 " Splits
 
 set splitright
