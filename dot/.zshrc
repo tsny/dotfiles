@@ -51,3 +51,4 @@ export PATH="~/.gimme/versions/go1.14.6.darwin.amd64/bin:${PATH}"
 
 export PATH="$HOME/bin:$PATH"
 
+bindkey '^ ' autosuggest-accept

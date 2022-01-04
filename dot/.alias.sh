@@ -2,6 +2,7 @@
 alias ll="ls -la --color"
 alias ls="ll"
 alias ..="cd .."
+alias hl="highlight"
 
 alias lvl="echo $SHLVL"
 alias ydla="youtube-dl -x --audio-format mp3"
