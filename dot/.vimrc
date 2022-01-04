@@ -149,6 +149,7 @@ nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
 nnoremap <leader>oe :Vexplore<CR>
 
 " Fzf
+nnoremap <c-f> :Files<cr>
 nnoremap <c-p> :Files<cr>
 nnoremap <c-h> :History<cr>
 nnoremap <leader>ff :Files ~/<cr>
@@ -396,6 +397,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 let g:go_highlight_functions = 1
@@ -410,6 +412,7 @@ nnoremap <leader>gb :GoBuild<CR>
 nnoremap <leader>gtf :GoTestFunc<CR>
 nnoremap <leader>gta :GoTest<CR>
 nnoremap <leader>gi :GoInfo<CR>
+nnoremap <leader>gl :GoLint<CR>
 
 " Enable colors in tmux
 if exists('+termguicolors')
