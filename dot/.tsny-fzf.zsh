@@ -1,4 +1,4 @@
-export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,Music,Pictures} --type f"
+export FZF_DEFAULT_COMMAND="fd -I --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,Music,Pictures} --type f"
 export FZF_ALT_C_COMMAND="fd --type d"
 export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border"
 

@@ -50,3 +50,5 @@ export PATH="~/.gimme/versions/go1.14.6.darwin.amd64/bin:${PATH}"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 bindkey '^ ' autosuggest-accept
+
+fpath=(~/.zsh $fpath)
