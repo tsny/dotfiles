@@ -47,6 +47,7 @@ fev() {
     [[ -f $file ]] && vim $file
 }
 
+
 # bind some keys to these funcs
 bindkey -s '^f' 'ff\n'
 bindkey -s '^b' 'gobm\n'

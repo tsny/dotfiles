@@ -30,9 +30,6 @@ export EDITOR='vim'
 source ~/.zsh-vim.zsh
 source ~/.alias.sh
 
-# Load work related zsh
-[[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
-
 # reloads zshrc
 alias reload="source ~/.zshrc"
 
@@ -48,6 +45,9 @@ export PATH="~/.gimme/versions/go1.14.6.darwin.amd64/bin:${PATH}"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Load work related zsh
+[[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
 
 bindkey '^ ' autosuggest-accept
 
