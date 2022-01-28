@@ -39,7 +39,7 @@ alias gpud="git pull upstream develop"
 alias gpudr="git pull --rebase upstream develop"
 
 alias gmt="go mod tidy"
-alias gorm="go run main.go"
+alias gorm="go run ."
 
 # Fetches all remote branches so they can be fed into fzf for easy navigation 
 function gfar() {

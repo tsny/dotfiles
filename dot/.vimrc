@@ -413,6 +413,7 @@ nnoremap <leader>gtf :GoTestFunc<CR>
 nnoremap <leader>gta :GoTest<CR>
 nnoremap <leader>gi :GoInfo<CR>
 nnoremap <leader>gl :GoLint<CR>
+nnoremap <leader>gr :GoRun<CR>
 
 " Enable colors in tmux
 if exists('+termguicolors')
