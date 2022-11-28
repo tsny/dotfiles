@@ -48,4 +48,5 @@ hermes-spec.yml
 settings.json
 __debug_bin
 props.dev
+props.prod
 props.local

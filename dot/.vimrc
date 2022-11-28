@@ -276,7 +276,7 @@ nnoremap <leader>cfn :call CopyFileName()<CR>
 nnoremap <leader>cfd :call CopyDir()<CR>
 
 " Set json syntax and format it
-nnoremap <leader>fj :set syntax=json<CR> :execute '%!python -m json.tool'<CR>
+nnoremap <leader>fj :set syntax=json<CR> :execute '%!python3 -m json.tool'<CR>
 
 " Splits
 
@@ -320,14 +320,8 @@ if has("gui_running")
     set lines=50
 endif
 
-" Setting colorscheme, degrades/defaults in a similar way to guifont
-"if &t_Co >= 256 || has("gui_running")
-    "colorscheme desert
-"endif
-silent! colorscheme atom-dark-256
-
 " Moves the window rather than the cursor
-" set scrolloff=20
+set scrolloff=20
 
 " Tabs are spaces 
 set tabstop=4 shiftwidth=4 expandtab
@@ -398,6 +392,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 let g:go_highlight_functions = 1
@@ -420,10 +415,10 @@ if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
-    colorscheme desert
+    colorscheme delek
 endif
 
-silent! colorscheme gruvbox
+colorscheme gruvbox
 set background=dark
 
 " WSL yank support

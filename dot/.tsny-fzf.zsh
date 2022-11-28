@@ -7,8 +7,9 @@ export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border"
 [[ ! -f ~/usr/share/fzf/key-bindings.zsh ]] || source ~/usr/share/fzf/key-bindings.zsh
 [[ ! -f ~/.fzf/shell/key-bindings.zsh ]] || source ~/.fzf/shell/key-bindings.zsh
 [[ ! -f ~/.fzf/shell/completion.zsh ]] || source ~/.fzf/shell/completion.zsh
-[[ ! -f /usr/local/Cellar/fzf/0.27.0/shell/completion.zsh ]] || source /usr/local/Cellar/fzf/0.27.0/shell/completion.zsh
-[[ ! -f /usr/local/Cellar/fzf/0.27.0/shell/key-bindings.zsh ]] || source /usr/local/Cellar/fzf/0.27.0/shell/key-bindings.zsh
+
+[[ ! -f /usr/local/Cellar/fzf/0.34.0/shell/completion.zsh ]] || source /usr/local/Cellar/fzf/0.34.0/shell/completion.zsh
+[[ ! -f /usr/local/Cellar/fzf/0.34.0/shell/key-bindings.zsh ]] || source /usr/local/Cellar/fzf/0.34.0/shell/key-bindings.zsh
 
 # bm - bookmark
 bm() {

@@ -10,19 +10,12 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-fzf-history-search)
 
 # bind key to run last command
 bindkey -s '^o' '!!\n\n' 
-
-# C-M-u: up-directory
-up-directory() {
-     builtin cd .. 
-      BUFFER=
-      zle accept-line
-}
-zle -N up-directory
-bindkey '^u' up-directory
+# bind key to go up one dir
+bindkey '^ ' autosuggest-accept
 
 source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
@@ -49,6 +42,13 @@ export PATH="~/.gimme/versions/go1.14.6.darwin.amd64/bin:${PATH}"
 # Load work related zsh
 [[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
 
-bindkey '^ ' autosuggest-accept
-
 fpath=(~/.zsh $fpath)
+
+export PATH="$HOME/bin:$PATH"
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tasnyder/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tasnyder/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tasnyder/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tasnyder/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
