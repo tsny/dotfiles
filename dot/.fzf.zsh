@@ -1,13 +1,13 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */Users/tasnyder/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/Users/tasnyder/.fzf/bin"
+if [[ ! "$PATH" == */home/tsny/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/home/tsny/.fzf/bin"
 fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "/Users/tasnyder/.fzf/shell/completion.zsh" 2> /dev/null
+source "/home/tsny/.fzf/shell/completion.zsh"
 
 # Key bindings
 # ------------
-source "/Users/tasnyder/.fzf/shell/key-bindings.zsh"
+source "/home/tsny/.fzf/shell/key-bindings.zsh"

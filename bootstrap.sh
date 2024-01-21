@@ -3,6 +3,7 @@ echo "Creating dirs..."
 
 # Copy over bookmarks only if file doesn't exist
 if [ ! -e "~/.shell_bookmarks" ]; then
+    printf "~/.shell_bookmarks not found! Creating...\n"
     cp -n .shell_bookmarks ~
     sed -i "s/\$USER/$(whoami)/g" ~/.shell_bookmarks
     return 1

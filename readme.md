@@ -24,17 +24,11 @@ Clone the repo
 git clone https://github.com/tsny/dotfiles.git ~/dev/dotfiles
 ```
 
-Run this to create folders and symlink the stuff
+Run this 
 
 ```
 sh bootstrap.sh
 ```
-
-## TODO
-
-- Make a .conf folder that should house most of our supplementary config files like
-(alias.sh, fzf.sh, etc)
-- Bootstrap could check if these things are installed and try to install them
 
 ## Plugins
 
@@ -52,6 +46,15 @@ or (installs and makes link to fd)
 `sudo apt-get install fd-find; mkdir ~/.local; mkdir ~/.local/bin; ln -s $(which fdfind) ~/.local/bin/fd`
 
 Ensure your path has `~/.local/bin` in it 
+
+Note 2024: Had to do this on Ubuntu: 
+```
+# Download the binary
+wget https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-musl_8.2.1_amd64.deb
+
+# Install the downloaded package
+sudo dpkg -i fd-musl_8.2.1_amd64.deb
+```
 
 ### [Gruvbox](https://github.com/gruvbox-community/gruvbox/wiki/Installation)
 
@@ -71,7 +74,16 @@ Once you do so, when you start a new terminal session, the Powerlevel10 configur
 ### [ZSH Autocomplete](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 Self-explanatory
 
-`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+```
+# zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# Install oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
 ### [Vim Plug](https://github.com/junegunn/vim-plug)
 Package manager for Vim extensions
