@@ -1,7 +1,12 @@
 echo "Starting setup..."
 echo "Creating dirs..."
 
-touch ~/.shell_bookmarks
+# Copy over bookmarks only if file doesn't exist
+if [ ! -e "~/.shell_bookmarks" ]; then
+    cp -n .shell_bookmarks ~
+    sed -i "s/\$USER/$(whoami)/g" ~/.shell_bookmarks
+    return 1
+fi
 
 mkdir -p ~/.config/vifm/colors
 mkdir ~/dev
@@ -9,13 +14,13 @@ mkdir ~/dev
 cp -R .vim ~/.vim
 
 dotDir=~/dev/dotfiles/dot
-dotfiles=`find $dotDir -type f -name ".*" -exec basename {} \;`
+local dotfiles=`find $dotDir -type f -name ".*" -exec basename {} \;`
 
 echo "Clearing and Symlinking...\n"
 
 for dotfile in $dotfiles
 do
-    rm ~/$dotfile
+    rm -f ~/$dotfile
     ln -sv $dotDir/$dotfile ~
 done
 
