@@ -30,6 +30,13 @@ Run this
 sh bootstrap.sh
 ```
 
+Other stuff:
+
+1. Make an ssh key
+```
+ssh-keygen -t rsa -b 2048 -C "your_email@example.com"
+```
+
 ## Plugins
 
 ### [fzf](https://github.com/junegunn/fzf)
