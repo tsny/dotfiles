@@ -50,3 +50,7 @@ __debug_bin
 props.dev
 props.prod
 props.local
+
+## PAYPAL
+secrets-actual.yml
+**/cmd/testenv

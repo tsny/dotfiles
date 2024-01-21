@@ -59,3 +59,8 @@ function vi_mode_prompt_info() {
 if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
   RPS1='$(vi_mode_prompt_info)'
 fi
+
+# bind key to run last command
+bindkey -s '^o' '!!\n\n' 
+# bind key to go up one dir
+bindkey '^ ' autosuggest-accept

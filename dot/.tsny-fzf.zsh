@@ -51,5 +51,5 @@ fev() {
 
 # bind some keys to these funcs
 bindkey -s '^f' 'ff\n'
-bindkey -s '^b' 'gobm\n'
+bindkey -s '^o' 'gobm\n'
 bindkey -s '^e' 'fev\n'

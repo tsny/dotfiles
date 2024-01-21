@@ -1,6 +1,11 @@
 " Author: tsny
 " Description: my .vimrc
 " Attributions: jdavis, tpope, stevelosh, tshirtman_ 
+"
+"""
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"""
 
 " --- BEFORE OTHER CMDS ---
 
@@ -28,52 +33,13 @@ set wildignore+=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn,*/cm/log/**
 set wildignore+=tags,*.jpg,*.png,*.jpeg,*.png,*.mesh,build*/**,build/**,*.svg,build2/**,build3/**
 set lazyredraw
 
-" --- STATUS LINE ---
-
-" Left side of status bar
-set laststatus=2
-
-set statusline=
-set statusline+=%*\ %l
-set statusline+=\ %*
-set statusline+=%*\%f\ %*
-set statusline+=%*\ %m\ \  
-
-"set statusline+=%*\ %F
-set statusline+=%{getcwd()}
-
-" Seperator
-set statusline+=%=
-
-" Right side of status line
-set statusline+=%((%l,%c)%)\ 
-set statusline+=%=%*%y%*%*\              
-set statusline+=%P\ \                     
-
 " Functions
-function! Fullscreen()
-    if has("gui_running")
-      " GUI is running or is about to start.
-      " Maximize gvim window (for an alternative on Windows, see simalt below).
-      set lines=999 columns=999
-    else
-      " This is console Vim.
-      if exists("+lines")
-        set lines=50
-      endif
-      if exists("+columns")
-        set columns=100
-      endif
-    endif
-endfunction
-
 function! CopyFilePath()
 
     " Convert slashes to backslashes for Windows 
     " and adds colon after drive name
     " Example file without fix 
     " /c/Users/tsny7/.vimrc
-    
     if has('win32unix')
         " Win Terminal VIM
         let path=substitute(expand("%:p"), "/", "\\", "g")
@@ -228,7 +194,6 @@ vnoremap <S-V> v
 nnoremap <leader>ss :set syntax=
 
 " Tabs
-
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tm :tabmove 
@@ -248,9 +213,6 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Mapping for fullscreen call
-nnoremap <leader>fs :call Fullscreen()<CR>
-
 " Specify the behavior when switching between buffers
 try
     set switchbuf=useopen,usetab,newtab
@@ -258,12 +220,11 @@ try
 catch
 endtry
 
-" Remap VIM 0 to first non-blank character
-noremap 0 $
-noremap $ ^
-
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Kube config file syntax highlight
+autocmd BufRead,BufNewFile ~/.kube/config set syntax=yaml
 
 " Folding
 set foldmethod=indent
@@ -322,9 +283,11 @@ endif
 
 " Moves the window rather than the cursor
 set scrolloff=20
+set cursorline
 
 " Tabs are spaces 
 set tabstop=4 shiftwidth=4 expandtab
+au BufRead,BufNewFile *.zsh setlocal shiftwidth=2
 
 " File Explorer
 let g:netrw_banner = 0
@@ -363,23 +326,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 1
 
-" --- STATUS LINE ---
-
-function! InsertStatuslineColor(mode)
-    if a:mode == 'i'
-        hi statusline guifg=Black ctermfg=Black guibg=lightred ctermbg=lightred
-    else
-        hi statusline guibg=lightgreen ctermbg=lightgreen
-    endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertChange * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=lightblue ctermfg=Black ctermbg=lightgray
-
-"Default the status bar to lightblue
-hi statusline guibg=lightblue ctermbg=lightgray guibg=lightblue ctermfg=Black 
-
 set rtp+=~/.fzf
 
 " Helper for tsv files
@@ -393,8 +339,15 @@ Plug 'mtdl9/vim-log-highlighting'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'chrisbra/csv.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'blueyed/vim-diminactive'
 call plug#end()
 
+let g:diminactive_enable_focus = 1
+
+
+"" GOLANG ---------------------------------------------------
 let g:go_highlight_functions = 1
 let g:go_highlight_function_parameters = 1
 let g:go_highlight_function_calls = 1
@@ -403,12 +356,17 @@ let g:go_highlight_types = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 
+" Something for go and indent lines
+set et
+let g:indent_guides_start_level=2
+
 nnoremap <leader>gb :GoBuild<CR>
 nnoremap <leader>gtf :GoTestFunc<CR>
 nnoremap <leader>gta :GoTest<CR>
 nnoremap <leader>gi :GoInfo<CR>
 nnoremap <leader>gl :GoLint<CR>
 nnoremap <leader>gr :GoRun<CR>
+"" ----------------------------------------------------------
 
 " Enable colors in tmux
 if exists('+termguicolors')

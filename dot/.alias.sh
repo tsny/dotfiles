@@ -5,9 +5,7 @@ alias ..="cd .."
 alias hl="highlight"
 
 alias lvl="echo $SHLVL"
-alias ydla="youtube-dl -x --audio-format mp3"
 
-alias bts="sh ~/dev/dotfiles/bootstrap.sh;"
 alias ppath='printf "%s\n" $path'
 
 # Git 
@@ -21,7 +19,9 @@ alias gct="git checkout --theirs"
 alias gat="git checkout --theirs"
 alias guc="git add -u; git commit"
 alias guf="git add -A; git commit -m 'Fast update commit'"
+alias gcap="git commit --amend --no-edit; git push --force"
 alias gcd="git checkout develop"
+alias gb="git branch -v"
 
 alias gac="git add -A; git commit"
 alias gps="git push"
@@ -30,21 +30,13 @@ alias gst="git status"
 alias giff="git diff -- . ':(exclude)*_gen.go'"
 # giff all
 alias giffa="git diff"
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-alias gorm="go run main.go"
-
-# PayPal specific
-alias gpud="git pull upstream develop"
-alias gpudr="git pull --rebase upstream develop"
-
-alias gmt="go mod tidy"
 alias gorm="go run ."
 
-# Fetches all remote branches so they can be fed into fzf for easy navigation 
-function gfar() {
-    for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
-}
+# PayPal specific
+alias gpodr="git pull --rebase origin develop"
+
+alias gmt="go mod tidy"
 
 # Docker
 if command -v docker &> /dev/null 
@@ -64,5 +56,3 @@ then
     alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 fi
 
-# AWS
-alias ebs='aws elasticbeanstalk'
