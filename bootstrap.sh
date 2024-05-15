@@ -14,7 +14,7 @@ mkdir ~/dev
 cp -R .vim ~/.vim
 
 dotDir=~/dev/dotfiles/dot
-local dotfiles=`find $dotDir -type f -name ".*" -exec basename {} \;`
+dotfiles=`find $dotDir -type f -name ".*" -exec basename {} \;`
 
 echo "Clearing and Symlinking...\n"
 
