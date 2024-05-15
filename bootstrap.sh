@@ -6,7 +6,6 @@ if [ ! -e "~/.shell_bookmarks" ]; then
     printf "~/.shell_bookmarks not found! Creating...\n"
     cp -n .shell_bookmarks ~
     sed -i "s/\$USER/$(whoami)/g" ~/.shell_bookmarks
-    return 1
 fi
 
 mkdir -p ~/.config/vifm/colors
@@ -30,5 +29,23 @@ if [ ! -d "~/.vim/autoload" ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
+# Install oh-my-zsh
+if [[ "$ZSH" != *"oh"* ]]; then
+    read -p "Do you want to install Oh My Zsh? (y/n): " choice
+    if [[ $choice == "y" || $choice == "Y" ]]; then
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
+fi
+
+# Install fzf
+if [ -d ~/.fzf ]; then
+    echo "fzf already installed"
+    return
+else 
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi 
+
 
 echo "Finished setup..."

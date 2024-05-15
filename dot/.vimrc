@@ -373,11 +373,21 @@ if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
-    colorscheme delek
+    colorscheme darkblue
 endif
 
-colorscheme gruvbox
 set background=dark
+" Try use plugin colorschemes 
+try 
+    colorscheme gruvbox
+catch
+    try 
+        colo atom-dark-256
+    catch
+        colo darkblue
+    endtry
+endtry
+
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
