@@ -31,12 +31,15 @@ if [ ! -d "~/.vim/autoload" ]; then
 fi
 
 # Install oh-my-zsh
-if [[ ! "$ZSH" == *"oh"* ]]; then
+if ! echo "$ZSH" | grep -q "oh"; then
     read -p "Do you want to install Oh My Zsh? (y/n): " choice
     if [[ $choice == "y" || $choice == "Y" ]]; then
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     fi
+else
+    echo "oh-my-zsh already installed"
 fi
+
 
 # Install fzf
 if [ -d ~/.fzf ]; then
