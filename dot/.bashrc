@@ -44,3 +44,4 @@ fi
 [ -f ~/tsny-fzf.sh ] && source ~/tsny-fzf.sh
 
 export PATH="~/.fzf/bin:$PATH"
+. "$HOME/.cargo/env"

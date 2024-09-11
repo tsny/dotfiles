@@ -107,7 +107,7 @@ Better diff for git
 Example .gitconfig
 ```
 [core]
-    editor = VIM
+    editor = vi
     pager = delta
 [interactive]
     diffFilter = delta --color-only

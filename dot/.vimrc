@@ -69,8 +69,6 @@ function! CopyDir()
 endfunction
 
 " Bare necessities
-
-nnoremap \ :!!<CR>
 syntax on
 
 nnoremap <leader>l :RustRun<CR>
@@ -98,7 +96,7 @@ map <leader>fj :%!jq .<CR>
 
 " Terminal binding that auto sources .bash_profile
 "nnoremap <leader>z :term<CR>source $HOME/.bash_profile<CR>
-nnoremap <leader>tz :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
+"nnoremap <leader>tz :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
 
 " Quickly get into .vimrc
 nnoremap <leader>ev :tabnew<cr>:e $MYVIMRC<cr>
@@ -131,22 +129,11 @@ nnoremap <leader>eq <C-w>=
 " Reloads .vimrc
 nnoremap <leader>so :so $MYVIMRC<CR>
 
-" Force quit fast
-nnoremap <leader>q :q!<CR>
-nnoremap <c-q>q :q!<CR>
-
 " Faster saving
 nnoremap <leader>w :w<CR>
 
-" Gettin' outta there quick
-nnoremap <leader>z :wq<CR>
-
-" Faster quitting
-nnoremap zz ZZ
-nnoremap zq ZQ
-
 " Clear search with esc to get rid of highlighting
-nnoremap <leader><leader> :noh<CR>
+nnoremap <C-c> :noh<CR>
 
 " Deleting a character does not overwrite buffer
 nnoremap x "_x
@@ -159,6 +146,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
 
 " Terminal splits movement - Testing, might break stuff
 if v:version >800
@@ -196,9 +184,8 @@ nnoremap <leader>ss :set syntax=
 " Tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
-map <leader>tm :tabmove 
-map <Leader>tc <esc>:tabclose<CR>
-map <C-w> <esc>:tabclose<CR>
+map <leader>tm :tabmove map <Leader>tc <esc>:tabclose<CR>
+
 
 " Automatically move to text instead of netrw
 
@@ -222,6 +209,20 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+
+" Thin bar cursor in input mode -----------
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" reset the cursor on start (for older versions of vim, usually not required)
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
+" -----------------------------------------
+
 
 " Kube config file syntax highlight
 autocmd BufRead,BufNewFile ~/.kube/config set syntax=yaml
@@ -333,19 +334,30 @@ au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 ta
 
 " Vim Plug if it exists
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf.vim'
-Plug 'gruvbox-community/gruvbox'
-Plug 'mtdl9/vim-log-highlighting'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'chrisbra/csv.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'blueyed/vim-diminactive'
+    Plug 'junegunn/fzf.vim'
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'mtdl9/vim-log-highlighting'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'chrisbra/csv.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'blueyed/vim-diminactive'
+
+    Plug 'easymotion/vim-easymotion'
+    map  f <Plug>(easymotion-bd-f)
+    nmap f <Plug>(easymotion-overwin-f)
+
+    Plug 'preservim/nerdtree'
+    nnoremap <leader>oe :NERDTree<CR>
+    " Exit Vim if NERDTree is the only window remaining in the only tab.
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 call plug#end()
 
-let g:diminactive_enable_focus = 1
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
 
+let g:diminactive_enable_focus = 1
 
 "" GOLANG ---------------------------------------------------
 let g:go_highlight_functions = 1
