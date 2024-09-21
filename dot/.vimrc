@@ -352,6 +352,10 @@ call plug#begin('~/.vim/plugged')
     nnoremap <leader>oe :NERDTree<CR>
     " Exit Vim if NERDTree is the only window remaining in the only tab.
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+    Plug 'terryma/vim-smooth-scroll'
+    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 2, 2)<CR>
+    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 2, 2)<CR>
 call plug#end()
 
 " Start NERDTree and put the cursor back in the other window.
@@ -370,7 +374,7 @@ let g:go_highlight_variable_declarations = 1
 
 " Something for go and indent lines
 set et
-let g:indent_guides_start_level=2
+let g:indent_guides_start_level=1
 
 nnoremap <leader>gb :GoBuild<CR>
 nnoremap <leader>gtf :GoTestFunc<CR>
