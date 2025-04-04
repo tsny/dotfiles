@@ -342,7 +342,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'chrisbra/csv.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'nathanaelkane/vim-indent-guides'
+
     Plug 'blueyed/vim-diminactive'
+    let g:diminactive_enable_focus = 1
+    let g:diminactive_use_syntax = 1
+    let g:diminactive_use_colorcolumn = 1
 
     Plug 'easymotion/vim-easymotion'
     map  f <Plug>(easymotion-bd-f)
@@ -353,15 +357,11 @@ call plug#begin('~/.vim/plugged')
     " Exit Vim if NERDTree is the only window remaining in the only tab.
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-    Plug 'terryma/vim-smooth-scroll'
-    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 2, 2)<CR>
-    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 2, 2)<CR>
 call plug#end()
 
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
 
-let g:diminactive_enable_focus = 1
 
 "" GOLANG ---------------------------------------------------
 let g:go_highlight_functions = 1
