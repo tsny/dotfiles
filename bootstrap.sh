@@ -15,12 +15,13 @@ mkdir $HOME/dev
 cp -R .vim $HOME/.vim
 
 DOTDIR=$HOME/dev/dotfiles/dot
+CONFIG_DIR=$HOME/.config
 
 echo "Clearing and Symlinking...\n"
 
 # Move alacritty 
-rm -f $HOME/config/alacritty/alacritty.toml
-ln -sv ${DOTDIR}/.config/alacritty.toml $HOME/.config/alacritty/alacritty.toml
+rm -f $CONFIG_DIR/alacritty/alacritty.toml
+ln -sv ${DOTDIR}/.config/alacritty.toml $CONFIG_DIR/alacritty/alacritty.toml
 
 
 # Move files that go in $HOME
