@@ -51,6 +51,4 @@ props.dev
 props.prod
 props.local
 
-## PAYPAL
-secrets-actual.yml
-**/cmd/testenv
+node_modules/
