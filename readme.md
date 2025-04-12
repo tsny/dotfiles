@@ -68,7 +68,7 @@ sudo dpkg -i fd-musl_8.2.1_amd64.deb
 Nice theme for Vim
 
 ### [Tmux manager](https://github.com/tmux-plugins/tpm)
-
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 Plugin manager for tmux
 
 ### [Powerline](https://gist.github.com/kevin-smets/8568070)

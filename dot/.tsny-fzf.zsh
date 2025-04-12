@@ -49,6 +49,31 @@ fev() {
     [[ -f $file ]] && vim $file
 }
 
+erc() {
+  local files=(
+    "$HOME/.zshrc"
+    "$HOME/.tmux.conf"
+    "$HOME/.config/alacritty/alacritty.toml"
+    "$HOME/.config/nvim/init.lua"
+    "$HOME/.gitconfig"
+    "$HOME/.vimrc"
+    "$HOME/.config/starship.toml"
+  )
+
+  local chosen
+  if command -v fzf >/dev/null; then
+    chosen=$(printf '%s\n' "${files[@]}" | fzf --multi)
+  else
+    echo "fzf not found, falling back to numbered select:"
+    select f in "${files[@]}"; do
+      chosen=$f
+      break
+    done
+  fi
+
+  [[ -n "$chosen" ]] && ${EDITOR:-nvim} $chosen
+}
+
 
 # bind some keys to these funcs
 bindkey -s '^f' 'ff\n'

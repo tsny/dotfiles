@@ -2,31 +2,40 @@ echo "Starting setup..."
 echo "Creating dirs..."
 
 # Copy over bookmarks only if file doesn't exist
-if [ ! -e "~/.shell_bookmarks" ]; then
-    printf "~/.shell_bookmarks not found! Creating...\n"
-    cp -n .shell_bookmarks ~
-    sed -i "s/\$USER/$(whoami)/g" ~/.shell_bookmarks
+if [ ! -e "$HOME/shell_bookmarks" ]; then
+    printf "$HOME/.shell_bookmarks not found! Creating...\n"
+    cp -n .shell_bookmarks $HOME
+    sed -i "s/\$USER/$(whoami)/g" $HOME/.shell_bookmarks
 fi
 
-mkdir -p ~/.config/vifm/colors
-mkdir ~/dev
+mkdir -p $HOME/.config/vifm/colors
+mkdir -p $HOME/.config/alacritty
+mkdir $HOME/dev
 
-cp -R .vim ~/.vim
+cp -R .vim $HOME/.vim
 
-dotDir=~/dev/dotfiles/dot
-dotfiles=`find $dotDir -type f -name ".*" -exec basename {} \;`
+DOTDIR=$HOME/dev/dotfiles/dot
 
 echo "Clearing and Symlinking...\n"
 
+# Move alacritty 
+rm -f $HOME/config/alacritty/alacritty.toml
+ln -sv ${DOTDIR}/.config/alacritty.toml $HOME/.config/alacritty/alacritty.toml
+
+
+# Move files that go in $HOME
+dotfiles=`find $DOTDIR -type f -name ".*" -exec basename {} \;`
 for dotfile in $dotfiles
 do
-    rm -f ~/$dotfile
-    ln -sv $dotDir/$dotfile ~
+    rm -f $HOME/$dotfile
+    ln -sv $DOTDIR/$dotfile $HOME
 done
 
-if [ ! -d "~/.vim/autoload" ]; then
+# Autoload vim
+# TODO: deprecate
+if [ ! -d "$HOME/.vim/autoload" ]; then
     echo "getting vim plug"
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
@@ -38,19 +47,19 @@ if ! echo "$ZSH" | grep -q "oh"; then
     fi
 
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 else
     echo "oh-my-zsh already installed"
 fi
 
 
 # Install fzf
-if [ -d ~/.fzf ]; then
+if [ -d $HOME/.fzf ]; then
     echo "fzf already installed"
     return
 else 
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    $HOME/.fzf/install
 fi 
 
 
