@@ -83,3 +83,24 @@ export PATH=~/dev/go/bin:$PATH
 [[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
 
 
+
+function update_alacritty_theme() {
+  local alac_config="$HOME/.config/alacritty/alacritty.toml"
+  local light_theme='"~/.config/alacritty/catppuccin-latte.toml"'
+  local dark_theme='"~/.config/alacritty/catppuccin-mocha.toml"'
+  local tmp_file="$(mktemp)"
+
+  local appearance=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+
+  if [[ "$appearance" == "Dark" ]]; then
+    sed "s|$light_theme|$dark_theme|g" "$alac_config" > "$tmp_file"
+  else
+    sed "s|$dark_theme|$light_theme|g" "$alac_config" > "$tmp_file"
+  fi
+
+  # Overwrite the symlink target instead of the symlink
+  cp "$tmp_file" "$(realpath "$alac_config")"
+  rm "$tmp_file"
+}
+
+update_alacritty_theme
