@@ -9,22 +9,28 @@ vim.g.mapleader = ","
 vim.opt.number = true       -- Show line numbers
 vim.opt.expandtab = true    -- Use spaces instead of tabs
 vim.opt.smartindent = true  -- Auto-indent new lines
+
+vim.opt.ignorecase = true  
+vim.opt.smartcase = true  
+
 vim.opt.clipboard = "unnamedplus" -- Use system clipboard
 vim.opt.termguicolors = true -- Enable 24-bit colors
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-vim.opt.shiftwidth = 2      -- Indent by 4 spaces
-vim.opt.tabstop = 2         -- A tab is 4 spaces
+vim.cmd("filetype plugin indent on")
+
+vim.opt.shiftwidth = 2      
+vim.opt.tabstop = 2        
 
 vim.opt.cursorline = true
 vim.opt.scrolloff = 20
+vim.opt.syntax = "enable"
 
 vim.opt.fillchars:append({ eob = " " })
 
 vim.cmd.colorscheme("slate")
-
 
 -- Plugin manager setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -37,36 +43,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("functions")
 require("keymaps")
 require("lazy").setup("plugins")
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  nested = true,
+-- Setup theme here
+local functions = require("functions")
+
+local style = functions.get_mac_theme()
+local theme = style == "light" and "tokyonight-day" or "zaibatsu"
+vim.cmd("colorscheme " .. theme)
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = ".tmux.conf",
   callback = function()
-    if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == "NvimTree" then
-      vim.cmd("quit")
-    end
+    vim.bo.filetype = "tmux"
+    vim.bo.syntax = "tmux"
   end,
 })
 
--- Function to check if running inside "kubectl edit"
-local function is_kubectl_edit()
-    local args = vim.v.argv
-    for _, arg in ipairs(args) do
-        if arg:match("kubectl") and arg:match("edit") then
-            return true
-        end
-    end
-    return false
-end
-
--- Open nvim-tree on startup unless in kubectl edit
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        if not is_kubectl_edit() then
-            require("nvim-tree.api").tree.open()
-            vim.cmd("wincmd p") -- Switch to the previous window
-        end
-    end
-})
+require("nvim-tree-config")
