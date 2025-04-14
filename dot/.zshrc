@@ -68,16 +68,17 @@ source ~/.alias.sh
 alias reload='exec "$SHELL"'
 
 vi() {
-  $EDITOR
+  $EDITOR $@
 }
-
-#export GOBIN=/usr/local/bin
-export GOPATH=~/dev/go
-export GOMODULE111=on
 
 export PATH=~/dev/go/bin:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [[ ! "$PATH" == */Users/$USER/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/Users/$USER/.fzf/bin"
+  source <(fzf --zsh)
+fi
+
 [ -f ~/.tsny-fzf.zsh ] && source ~/.tsny-fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
