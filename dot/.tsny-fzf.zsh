@@ -52,6 +52,7 @@ fev() {
 erc() {
   local files=(
     "$HOME/.zshrc"
+    "$HOME/.work.zsh"
     "$HOME/.tmux.conf"
     "$HOME/.config/alacritty/alacritty.toml"
     "$HOME/.config/nvim/init.lua"
