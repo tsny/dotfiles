@@ -73,9 +73,8 @@ vi() {
 
 export PATH=~/dev/go/bin:$PATH
 
-
-if [[ ! "$PATH" == */Users/$USER/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/Users/$USER/.fzf/bin"
+if [[ ! "$PATH" == *$HOME/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
   source <(fzf --zsh)
 fi
 
