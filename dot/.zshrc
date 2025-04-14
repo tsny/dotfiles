@@ -67,6 +67,10 @@ source ~/.alias.sh
 # alias reload="source ~/.zshrc"
 alias reload='exec "$SHELL"'
 
+vi() {
+  $EDITOR
+}
+
 #export GOBIN=/usr/local/bin
 export GOPATH=~/dev/go
 export GOMODULE111=on
@@ -81,7 +85,6 @@ export PATH=~/dev/go/bin:$PATH
 
 # Load work related zsh
 [[ ! -f ~/.work.zsh ]] || source ~/.work.zsh
-
 
 
 function update_alacritty_theme() {
