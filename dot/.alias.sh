@@ -26,15 +26,15 @@ alias gb="git branch -v"
 alias gac="git add -A; git commit"
 alias gps="git push"
 alias gst="git status"
+
 # git diff
-alias giff="git diff -- . ':(exclude)*_gen.go'"
-# giff all
-alias giffa="git diff"
+alias giff="git diff -- ':(exclude)*_gen.go'"
 
 alias gorm="go run ."
 
-# PayPal specific
+# Specific
 alias gpodr="git pull --rebase origin develop"
+alias gpm="git pull origin master"
 
 alias gmt="go mod tidy"
 

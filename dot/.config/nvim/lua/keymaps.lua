@@ -1,3 +1,5 @@
+local functions = require("functions")
+
 -- Keybindings 
 vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
@@ -9,7 +11,7 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
-vim.keymap.set("n", ";", ":", { noremap = true, silent = true })
+vim.keymap.set("n", ";", ":", { noremap = true })
 
 -- Add line below current
 vim.keymap.set("n", "K", "o<ESC>k", { noremap = true, silent = true })
@@ -32,7 +34,7 @@ vim.keymap.set("n", "<C-h>", ":History<CR>", { noremap = true, silent = true }) 
 vim.keymap.set("n", "<leader>ff", ":Files ~/dev<CR>", { noremap = true, silent = true }) -- Find files in ~/dev
 vim.keymap.set("n", "H", ":History<CR>", { noremap = true, silent = true }) -- History command
 
-vim.keymap.set("n", "<leader>cfp", CopyFilePath, { noremap = true, silent = true }) -- Copy file path
+vim.keymap.set("n", "<leader>cfp", functions.CopyFilePath, { noremap = true, silent = true }) -- Copy file path
 
 -- Remap <S-V> and v
 vim.keymap.set("n", "v", "<S-V>", { noremap = true, silent = true }) -- Normal mode: v to <S-V>

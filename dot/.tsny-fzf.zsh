@@ -55,9 +55,9 @@ erc() {
     "$HOME/.tmux.conf"
     "$HOME/.config/alacritty/alacritty.toml"
     "$HOME/.config/nvim/init.lua"
+    "$HOME/.config/k9s/config.yaml"
     "$HOME/.gitconfig"
     "$HOME/.vimrc"
-    "$HOME/.config/starship.toml"
   )
 
   local chosen
