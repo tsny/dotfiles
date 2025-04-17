@@ -52,3 +52,6 @@ props.prod
 props.local
 
 node_modules/
+_private/
+.envrc
+todo.md

@@ -75,6 +75,15 @@ erc() {
   [[ -n "$chosen" ]] && ${EDITOR:-nvim} $chosen
 }
 
+# Search for current user's github PRs and select one to open in chrome
+prs() {
+  local selected
+  selected=$(gh search prs --author @me --state open --limit 100 --json title,url \
+    | jq -r '.[] | "\(.title) \(.url)"' \
+    | fzf --preview 'echo {}')
+  [[ -n "$selected" ]] && echo "$selected"
+  [[ -n "$selected" ]] && chrome-cli open "$(awk '{print $NF}' <<< "$selected")"
+}
 
 # bind some keys to these funcs
 bindkey -s '^f' 'ff\n'
