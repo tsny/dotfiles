@@ -55,7 +55,7 @@ erc() {
     "$HOME/.work.zsh"
     "$HOME/.tmux.conf"
     "$HOME/.config/alacritty/alacritty.toml"
-    "$HOME/.config/nvim/init.lua"
+    "$HOME/.config/nvim"
     "$HOME/.config/k9s/config.yaml"
     "$HOME/.gitconfig"
     "$HOME/.vimrc"
