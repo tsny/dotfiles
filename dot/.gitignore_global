@@ -55,3 +55,6 @@ node_modules/
 _private/
 .envrc
 todo.md
+
+.env
+.env.local

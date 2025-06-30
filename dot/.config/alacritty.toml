@@ -1,8 +1,9 @@
 # https://github.com/catppuccin/alacritty
+[general]
 import = [
-  #"~/.config/alacritty/catppuccin-mocha.toml"
+  #"~/.config/alacritty/catppuccin-latte.toml"
   #"~/.config/alacritty/themes/themes/github_light.toml"
-  "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/catppuccin-latte.toml"
   #"~/.config/alacritty/catppuccin-frappe.toml"
 ]
 

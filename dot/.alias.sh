@@ -26,7 +26,7 @@ alias gb="git branch -v"
 alias gac="git add -A; git commit"
 alias gps="git push"
 alias gst="git status"
-
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 # git diff
 alias giff="git diff -- ':(exclude)*_gen.go'"
 
