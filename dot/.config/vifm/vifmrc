@@ -3,6 +3,8 @@ colo gruvbox
 
 nnoremap ; :
 
+nnoremap <C-o> :bmarks<CR>
+
 set vicmd=nvim
 
 set scrolloff=4
