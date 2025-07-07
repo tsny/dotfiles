@@ -8,3 +8,5 @@ Library/
 AndroidStudioProjects/
 *.pyc
 *.class
+node_modules/
+go/
