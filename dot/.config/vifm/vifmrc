@@ -1,1 +1,6 @@
 set dotfiles
+colo gruvbox
+
+nnoremap ; :
+
+set vicmd=nvim
