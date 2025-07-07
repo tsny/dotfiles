@@ -19,7 +19,7 @@ bm() {
 
 # gobm -  go to bookmark
 gobm() {
-    local dir=$(cat ~/.shell_bookmarks | fzf)
+    local dir=$(cat ~/.shell_bookmarks | sort -u | fzf)
     [[ -d $dir ]] && cd $dir
 }
 
