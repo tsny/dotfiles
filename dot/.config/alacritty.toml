@@ -14,8 +14,8 @@ TERM = "xterm-256color"
     decorations = "None"
 
 [font]
-normal.family = "MesloLGS NF"
-bold.family = "MesloLGS NF"
-italic.family = "MesloLGS NF"
-bold_italic.family = "MesloLGS NF"
+normal.family = "MesloLGS Nerd Font"
+bold.family = "MesloLGS Nerd Font"
+italic.family = "MesloLGS Nerd Font"
+bold_italic.family = "MesloLGS Nerd Font"
 
