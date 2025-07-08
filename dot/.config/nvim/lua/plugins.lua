@@ -15,7 +15,7 @@ return {
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = "all", -- Install all available parsers
+        ensure_installed = { "c", "lua", "yaml", "json", "vim", "vimdoc", "query", "go", "typescript", "javascript", "html" },
         highlight = { enable = true },
         indent = { enable = true },
       })
@@ -48,9 +48,6 @@ return {
   -- Fuzzy finder (like fzf)
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
-  -- Syntax highlighting (Treesitter)
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-
   -- LSP support
   { "neovim/nvim-lspconfig" },
 
@@ -65,7 +62,7 @@ return {
   -- Pane dimming
   { "tadaa/vimade", opts = {
     ncmode = 'windows',
-  }
+    }
   },
 
   { "catppuccin/nvim", name = "catppuccin", 
@@ -85,6 +82,15 @@ return {
 
   -- Colorscheme
   { "folke/tokyonight.nvim" },
+
+  {
+    'smoka7/hop.nvim',
+    version = "*",
+    quit_key = '<SPC>',
+    opts = {
+        keys = 'etovxqpdygfblzhckisuran'
+    }
+  },
 
   {
     "lukas-reineke/indent-blankline.nvim",

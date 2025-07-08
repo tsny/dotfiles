@@ -50,7 +50,7 @@ require("lazy").setup("plugins")
 local functions = require("functions")
 
 local style = functions.get_mac_theme()
-local theme = style == "light" and "tokyonight-day" or "zaibatsu"
+local theme = style == "light" and "tokyonight-day" or "catppuccin-mocha" or "zaibatsu"
 vim.cmd("colorscheme " .. theme)
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

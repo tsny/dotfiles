@@ -28,7 +28,7 @@ vim.keymap.set("n", "<leader>hs", ":split<CR>", { noremap = true, silent = true 
 vim.keymap.set("n", "<leader>oe", ":NvimTreeOpen<CR>", { noremap = true, silent = true }) -- Open netrw
 
 -- FZF keybindings
-vim.keymap.set("n", "<C-f>", ":Buffers<CR>", { noremap = true, silent = true })  -- Switch buffers
+vim.keymap.set("n", "<C-f>", ":RG<CR>", { noremap = true, silent = true })  -- Switch buffers
 vim.keymap.set("n", "<C-p>", ":Files<CR>", { noremap = true, silent = true })    -- Find files
 vim.keymap.set("n", "<C-h>", ":History<CR>", { noremap = true, silent = true })  -- Open command history
 vim.keymap.set("n", "<leader>ff", ":Files ~/dev<CR>", { noremap = true, silent = true }) -- Find files in ~/dev
@@ -42,3 +42,6 @@ vim.keymap.set("n", "<S-V>", "v", { noremap = true, silent = true }) -- Normal m
 
 vim.keymap.set("v", "v", "<S-V>", { noremap = true, silent = true }) -- Visual mode: v to <S-V>
 vim.keymap.set("v", "<S-V>", "v", { noremap = true, silent = true }) -- Visual mode: <S-V> to v
+
+-- Hop
+vim.api.nvim_set_keymap('', 'f', "<cmd>lua require'hop'.hint_char2()<cr>", {})
