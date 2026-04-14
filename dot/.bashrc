@@ -3,7 +3,7 @@
 
 ### VIM Movement
 
-export EDITOR=VIM
+export EDITOR=VI
 export VISUAL=VIM
 set -o vi
 bind '"jk":vi-movement-mode'

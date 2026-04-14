@@ -7,6 +7,7 @@ alias hl="highlight"
 alias lvl="echo $SHLVL"
 
 alias ppath='printf "%s\n" $path'
+alias env='env | sort'
 
 # Git 
 alias gpl="git pull"

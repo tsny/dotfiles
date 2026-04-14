@@ -109,3 +109,14 @@ function update_alacritty_theme() {
 }
 
 update_alacritty_theme
+
+# pnpm
+export PNPM_HOME="~/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+#
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$(yarn global bin)"
