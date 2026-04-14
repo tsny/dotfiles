@@ -1,5 +1,5 @@
 export FZF_DEFAULT_COMMAND="fd -I --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,Music,Pictures} --type f"
-export FZF_ALT_C_COMMAND="fd --type d"
+export FZF_ALT_C_COMMAND="fd -I --type d"
 export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border"
 
 ## fzf stuff, check a few places for config files
@@ -31,7 +31,7 @@ gossh() {
 
 # ff - cd to selected directory
 ff() {
-    local dir=$(fd --type d | fzf)
+    local dir=$(fd -I --type d | fzf)
     [[ -d $dir ]] && cd $dir
 }
 

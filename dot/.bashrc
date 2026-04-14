@@ -45,3 +45,4 @@ fi
 
 export PATH="~/.fzf/bin:$PATH"
 . "$HOME/.cargo/env"
+

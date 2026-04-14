@@ -45,7 +45,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions kubectl)
+plugins=(git zsh-autosuggestions kubectl direnv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,11 +109,3 @@ function update_alacritty_theme() {
 }
 
 update_alacritty_theme
-
-# pnpm
-export PNPM_HOME="/Users/taylor.snyder/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
