@@ -1,3 +1,24 @@
+DOTDIR=$HOME/dev/dotfiles/dot
+CONFIG_DIR=$HOME/.config
+
+relink_config() {
+    echo "Relinking missing .config symlinks..."
+    for item in "$DOTDIR/.config"/*; do
+        name=$(basename "$item")
+        target="$CONFIG_DIR/$name"
+        if [ ! -e "$target" ] && [ ! -L "$target" ]; then
+            ln -sv "$item" "$target"
+        else
+            echo "  skip: $name already exists"
+        fi
+    done
+    echo "Done."
+}
+
+case "${1:-}" in
+    relink) relink_config; exit 0 ;;
+esac
+
 echo "Starting setup..."
 echo "Creating dirs..."
 
@@ -13,9 +34,6 @@ mkdir -p $HOME/.config/alacritty
 mkdir $HOME/dev
 
 cp -R .vim $HOME/.vim
-
-DOTDIR=$HOME/dev/dotfiles/dot
-CONFIG_DIR=$HOME/.config
 
 echo "Clearing and Symlinking...\n"
 
