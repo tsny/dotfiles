@@ -113,7 +113,7 @@ nnoremap <leader>fm :tabnew<cr>:e ~/.config/vifm/vifmrc<cr>
 nnoremap <leader>oe :Vexplore<CR>
 
 " Fzf
-nnoremap <c-f> :Files<cr>
+nnoremap <c-f> :Rg<cr>
 nnoremap <c-p> :Files<cr>
 nnoremap <c-h> :History<cr>
 nnoremap <leader>ff :Files ~/<cr>
@@ -354,6 +354,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'preservim/nerdtree'
     nnoremap <leader>oe :NERDTree<CR>
+    let NERDTreeShowHidden=1
     " Exit Vim if NERDTree is the only window remaining in the only tab.
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
