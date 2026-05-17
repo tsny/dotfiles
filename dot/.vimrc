@@ -121,7 +121,7 @@ nnoremap H :History<cr>
 nnoremap <leader>b :Buffers<cr>
 
 let g:fzf_buffers_jump = 1
-set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
 
 " Makes all splits equal size
 nnoremap <leader>eq <C-w>=
@@ -327,13 +327,12 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 1
 
-set rtp+=~/.fzf
-
 " Helper for tsv files
 au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 tabstop=20
 
 " Vim Plug if it exists
 call plug#begin('~/.vim/plugged')
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'gruvbox-community/gruvbox'
     Plug 'mtdl9/vim-log-highlighting'

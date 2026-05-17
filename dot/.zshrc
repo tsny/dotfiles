@@ -57,9 +57,7 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# bind key to run last command
-bindkey -s '^o' '!!\n\n' 
-# bind key to go up one dir
+
 bindkey '^ ' autosuggest-accept
 
 source ~/.zsh-vim.zsh
@@ -68,6 +66,8 @@ source ~/.alias.sh
 # reloads zshrc
 # alias reload="source ~/.zshrc"
 alias reload='exec "$SHELL"'
+
+alias prd='pnpm run dev'
 
 vi() {
   $EDITOR $@
@@ -95,7 +95,7 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
 # pnpm end
 #
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:$(yarn global bin)"
