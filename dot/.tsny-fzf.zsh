@@ -49,31 +49,6 @@ fev() {
     [[ -f $file ]] && vim $file
 }
 
-erc() {
-  local files=(
-    "$HOME/.zshrc"
-    "$HOME/.work.zsh"
-    "$HOME/.tmux.conf"
-    "$HOME/.config/alacritty/alacritty.toml"
-    "$HOME/.config/nvim"
-    "$HOME/.config/k9s/config.yaml"
-    "$HOME/.gitconfig"
-    "$HOME/.vimrc"
-  )
-
-  local chosen
-  if command -v fzf >/dev/null; then
-    chosen=$(printf '%s\n' "${files[@]}" | fzf --multi)
-  else
-    echo "fzf not found, falling back to numbered select:"
-    select f in "${files[@]}"; do
-      chosen=$f
-      break
-    done
-  fi
-
-  [[ -n "$chosen" ]] && ${EDITOR:-nvim} $chosen
-}
 
 # Search for current user's github PRs and select one to open in chrome
 prs() {

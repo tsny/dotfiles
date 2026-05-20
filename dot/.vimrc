@@ -28,6 +28,7 @@ filetype indent on
 filetype plugin on
 
 set autoread
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * checktime
 set wildmenu
 set wildignore+=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn,*/cm/log/**
 set wildignore+=tags,*.jpg,*.png,*.jpeg,*.png,*.mesh,build*/**,build/**,*.svg,build2/**,build3/**
@@ -342,6 +343,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'nathanaelkane/vim-indent-guides'
 
+    Plug 'ryanoasis/vim-devicons'
+
     Plug 'blueyed/vim-diminactive'
     let g:diminactive_enable_focus = 1
     let g:diminactive_use_syntax = 1
@@ -359,8 +362,10 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+let g:airline_section_b = '%{pathshorten(getcwd())}'
+
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
 
 
 "" GOLANG ---------------------------------------------------
