@@ -12,8 +12,16 @@
 " Few commands for improving performance
 set regexpengine=0
 set synmaxcol=1000
+set redrawtime=10000
 set nocompatible
 set modelines=0
+
+" Disable syntax on very large files (>1MB)
+autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
+
+" Prevent terminal response sequences from leaking into input buffer in WSL
+set t_RV=
+set t_u7=
 
 " auto change dir
 " autocmd BufEnter * silent! lcd %:p:h
@@ -122,7 +130,9 @@ nnoremap H :History<cr>
 nnoremap <leader>b :Buffers<cr>
 
 let g:fzf_buffers_jump = 1
-set rtp+=/opt/homebrew/opt/fzf
+if !has('win32unix') && isdirectory('/opt/homebrew/opt/fzf')
+    set rtp+=/opt/homebrew/opt/fzf
+endif
 
 " Makes all splits equal size
 nnoremap <leader>eq <C-w>=
@@ -185,13 +195,14 @@ nnoremap <leader>ss :set syntax=
 " Tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
-map <leader>tm :tabmove map <Leader>tc <esc>:tabclose<CR>
+map <leader>tm :tabmove<Space>
+map <Leader>tc <esc>:tabclose<CR>
 
 
 " Automatically move to text instead of netrw
 
-map <Leader>n <esc>:tabprevious<CR><C-l>
-map <Leader>m <esc>:tabnext<CR><C-l>
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
 
 
 " Opens a new tab with the current buffer's path
