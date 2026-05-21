@@ -10,7 +10,7 @@
 " --- BEFORE OTHER CMDS ---
 
 " Few commands for improving performance
-set regexpengine=1
+set regexpengine=0
 set synmaxcol=1000
 set nocompatible
 set modelines=0
@@ -394,20 +394,27 @@ if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
-    colorscheme darkblue
 endif
 
-set background=dark
-" Try use plugin colorschemes 
-try 
-    colorscheme gruvbox
-catch
-    try 
-        colo atom-dark-256
+function! SetThemeFromSystem()
+    let l:mode = system('defaults read -g AppleInterfaceStyle 2>/dev/null')
+    if l:mode =~? 'dark'
+        set background=dark
+    else
+        set background=light
+    endif
+    try
+        colorscheme gruvbox
     catch
-        colo darkblue
+        try
+            colo darkblue
+        catch
+        endtry
     endtry
-endtry
+endfunction
+
+call SetThemeFromSystem()
+autocmd FocusGained * call SetThemeFromSystem()
 
 
 " WSL yank support
