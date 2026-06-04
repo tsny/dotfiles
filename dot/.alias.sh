@@ -22,7 +22,7 @@ alias guc="git add -u; git commit"
 alias guf="git add -A; git commit -m 'Fast update commit'"
 alias gcap="git commit --amend --no-edit; git push --force"
 alias gcd="git checkout develop"
-alias gb="git branch -v"
+alias gb="git branch --all -v"
 
 alias gac="git add -A; git commit"
 alias gps="git push"
