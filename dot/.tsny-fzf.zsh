@@ -45,7 +45,7 @@ fbr() {
 
 # fev - find and edit w/ vim
 fev() {
-    local file=$(fd -t file | fzf)
+    local file=$(fd -t file -H | fzf)
     [[ -f $file ]] && vim $file
 }
 
