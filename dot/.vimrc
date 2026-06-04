@@ -134,6 +134,8 @@ if !has('win32unix') && isdirectory('/opt/homebrew/opt/fzf')
     set rtp+=/opt/homebrew/opt/fzf
 endif
 
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git"'
+
 " Makes all splits equal size
 nnoremap <leader>eq <C-w>=
 

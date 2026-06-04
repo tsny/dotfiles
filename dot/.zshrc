@@ -70,7 +70,7 @@ alias reload='exec "$SHELL"'
 alias prd='pnpm run dev'
 
 if command -v eza &>/dev/null; then
-  alias ls='eza -ls type --icons=always'
+  alias ls='eza --all -ls type --icons=always'
 fi
 
 vi() {
