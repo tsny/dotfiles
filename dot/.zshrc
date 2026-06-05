@@ -60,6 +60,7 @@ export EDITOR='vim'
 
 bindkey '^ ' autosuggest-accept
 
+
 source ~/.zsh-vim.zsh
 source ~/.alias.sh
 
@@ -103,3 +104,5 @@ esac
 # pnpm end
 #
 export PATH="$HOME/.local/bin:$PATH"
+
+bindkey -s '^u' 'cd ..\n'
