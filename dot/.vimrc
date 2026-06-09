@@ -35,8 +35,12 @@ endif
 filetype indent on
 filetype plugin on
 
+" Automatically reload unmodified buffers when files change on disk.
 set autoread
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * checktime
+augroup AutoReloadBuffers
+    autocmd!
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * silent! checktime
+augroup END
 set wildmenu
 set wildignore+=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn,*/cm/log/**
 set wildignore+=tags,*.jpg,*.png,*.jpeg,*.png,*.mesh,build*/**,build/**,*.svg,build2/**,build3/**
