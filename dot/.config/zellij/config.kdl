@@ -1,3 +1,5 @@
+// tsny
+
 keybinds clear-defaults=true {
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
@@ -7,7 +9,6 @@ keybinds clear-defaults=true {
         bind "down" { MoveFocus "down"; }
         bind "up" { MoveFocus "up"; }
         bind "right" { MoveFocus "right"; }
-
         bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
         bind "s" { NewPane "down"; SwitchToMode "normal"; }
         bind "v" { NewPane "right"; SwitchToMode "normal"; }
@@ -52,9 +53,8 @@ keybinds clear-defaults=true {
         bind "l" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "normal"; }
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
-        bind "s" { NewPane "down"; SwitchToMode "normal"; }
+        bind "s" { ToggleActiveSyncTab; SwitchToMode "normal"; }
         bind "Ctrl t" { SwitchToMode "normal"; }
-        bind "v" { NewPane "right"; SwitchToMode "normal"; }
         bind "x" { CloseTab; SwitchToMode "normal"; }
         bind "tab" { ToggleTab; }
     }
@@ -74,8 +74,7 @@ keybinds clear-defaults=true {
         bind "j" { Resize "Increase down"; }
         bind "k" { Resize "Increase up"; }
         bind "l" { Resize "Increase right"; }
-        bind "Ctrl n" { SwitchToMode "normal"; }
-        bind "Alt n" { NewPane; }
+        bind "x" { SwitchToMode "normal"; }
     }
     move {
         bind "left" { MovePane "left"; }
@@ -92,7 +91,15 @@ keybinds clear-defaults=true {
         bind "tab" { MovePane; }
     }
     scroll {
+        bind "Alt left" { MoveFocusOrTab "left"; SwitchToMode "normal"; }
+        bind "Alt down" { MoveFocus "down"; SwitchToMode "normal"; }
+        bind "Alt up" { MoveFocus "up"; SwitchToMode "normal"; }
+        bind "Alt right" { MoveFocusOrTab "right"; SwitchToMode "normal"; }
         bind "e" { EditScrollback; SwitchToMode "normal"; }
+        bind "Alt h" { MoveFocusOrTab "left"; SwitchToMode "normal"; }
+        bind "Alt j" { MoveFocus "down"; SwitchToMode "normal"; }
+        bind "Alt k" { MoveFocus "up"; SwitchToMode "normal"; }
+        bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "normal"; }
         bind "s" { SwitchToMode "entersearch"; SearchInput 0; }
     }
     search {
@@ -117,8 +124,14 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
-        bind "Ctrl o" { SwitchToMode "normal"; }
-        bind "Alt o" { MoveTab "right"; }
+        bind "l" {
+            LaunchOrFocusPlugin "zellij:layout-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "normal"
+        }
+        bind "Alt o" { SwitchToMode "normal"; }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
                 floating true
@@ -142,10 +155,6 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
-        bind "Ctrl left" { MoveFocusOrTab "left"; }
-        bind "Ctrl down" { MoveFocus "down"; }
-        bind "Ctrl up" { MoveFocus "up"; }
-        bind "Ctrl right" { MoveFocusOrTab "right"; }
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
@@ -161,29 +170,40 @@ keybinds clear-defaults=true {
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
         bind "Ctrl x" { CloseFocus; SwitchToMode "normal"; }
+        bind "Ctrl n" { GoToNextTab; }
+        bind "Ctrl b" { GoToPreviousTab; }
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { MoveFocusOrTab "left"; }
         //bind "Alt h" { SwitchToMode "move"; }
     }
     shared_except "locked" "session" {
-        bind "Alt o" { SwitchToMode "session"; }
+        bind "Ctrl o" { SwitchToMode "session"; }
+    }
+    shared_except "locked" "scroll" {
+        bind "Ctrl h" { MoveFocusOrTab "left"; }
+        bind "Ctrl l" { MoveFocusOrTab "right"; }
+        bind "Ctrl k" { MoveFocusOrTab "up"; }
+        bind "Ctrl j" { MoveFocusOrTab "down"; }
+
+        bind "Alt down" { MoveFocus "down"; }
+        bind "Alt up" { MoveFocus "up"; }
+        bind "Alt j" { MoveFocus "down"; }
+        bind "Alt k" { MoveFocus "up"; }
     }
     shared_except "locked" "scroll" "search" "tmux" {
-        bind "Ctrl b" { SwitchToMode "tmux"; }
+        //bind "Ctrl b" { SwitchToMode "tmux"; }
     }
     shared_except "locked" "scroll" "search" {
-        bind "Ctrl s" { SwitchToMode "scroll"; }
+        bind "Alt s" { SwitchToMode "scroll"; }
     }
     shared_except "locked" "tab" {
-        bind "Ctrl a" { SwitchToMode "tab"; }
-        bind "Ctrl t" { SwitchToMode "tab"; }
+        bind "Alt a" { SwitchToMode "tab"; }
     }
     shared_except "locked" "pane" {
         bind "Ctrl a" { SwitchToMode "pane"; }
     }
     shared_except "locked" "resize" {
-        bind "Ctrl n" { GoToNextTab; }
         bind "Alt n" { SwitchToMode "resize"; }
     }
     shared_except "normal" "locked" "entersearch" {
@@ -276,6 +296,7 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
+    zellij:link
 }
 web_client {
     font "monospace"
@@ -288,18 +309,22 @@ web_client {
 // 
 // simplified_ui true
  
+// Enable OSC8 hyperlink output
+// Options:
+//   - true (Default)
+//   - false
+// 
+// osc8_hyperlinks true
+ 
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
 // theme "dracula"
-
-  theme "gruvbox_light"
-
  
 // Choose the base input mode of zellij.
 // Default: normal
 // 
-// default_mode "locked"
+default_mode "normal"
  
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
@@ -323,6 +348,7 @@ web_client {
 // The folder in which Zellij will look for themes
 // (Requires restart)
 // 
+// theme_dir "/tmp"
  
 // Toggle enabling the mouse mode.
 // On certain configurations, or terminals this could
@@ -525,6 +551,22 @@ show_startup_tips false
 // default is true
 // advanced_mouse_actions false
  
+// Whether to enable mouse hover visual effects (frame highlight and help text)
+// default is true
+// mouse_hover_effects false
+ 
+// Whether to show visual bell indicators (pane/tab frame flash and [!] suffix)
+// default is true
+// visual_bell true
+ 
+// Whether to focus panes on mouse hover
+// default is false
+// focus_follows_mouse false
+ 
+// Whether clicking a pane to focus it also sends the click into the pane
+// default is false
+// mouse_click_through false
+ 
 // The ip address the web server should listen on when it starts
 // Default: "127.0.0.1"
 // (Requires restart)
@@ -541,3 +583,10 @@ show_startup_tips false
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+
+// Number of async worker tasks to spawn per active client.
+//
+// Allocating few tasks may result in resource contention and lags. Small values (around 4) should
+// typically work best. Set to 0 to use the number of (physical) CPU cores.
+// Note: This only applies to web clients at the moment.
+// client_async_worker_tasks 4
