@@ -174,6 +174,13 @@ let s:tmux_navigation_commands = {
             \ }
 
 function! s:NavigatePane(direction) abort
+    " Keep vertical navigation inside focused popup windows.
+    if index(['j', 'k'], a:direction) >= 0
+                \ && exists('*win_gettype') && win_gettype() ==# 'popup'
+        execute 'normal! ' . a:direction
+        return
+    endif
+
     let l:previous_window = winnr()
     execute 'wincmd ' . a:direction
 
@@ -218,6 +225,13 @@ if has('terminal')
     tnoremap <silent> <C-k> <C-w>:call <SID>NavigatePane('k')<CR>
     tnoremap <silent> <C-l> <C-w>:call <SID>NavigatePane('l')<CR>
 endif
+
+" Let fzf panes, including :History, handle vertical navigation themselves.
+augroup FzfPaneNavigation
+    autocmd!
+    autocmd FileType fzf tnoremap <buffer> <C-j> <C-j>
+    autocmd FileType fzf tnoremap <buffer> <C-k> <C-k>
+augroup END
 
 " Tab matches bracket pairs
 nnoremap <tab> %
