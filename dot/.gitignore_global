@@ -60,3 +60,5 @@ todo.md
 .env.local
 
 **/.claude/settings.local.json
+
+.terraform-version

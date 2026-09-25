@@ -158,19 +158,65 @@ nnoremap x "_x
 " Select pasted text
 nnoremap <leader>p V`]
 
-" Moving quickly around splits
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Move through Vim splits first, then hand navigation to Zellij at an edge.
+let g:tmux_navigator_no_mappings = 1
+let s:zellij_directions = {
+            \ 'h': 'left',
+            \ 'j': 'down',
+            \ 'k': 'up',
+            \ 'l': 'right',
+            \ }
+let s:tmux_navigation_commands = {
+            \ 'h': 'TmuxNavigateLeft',
+            \ 'j': 'TmuxNavigateDown',
+            \ 'k': 'TmuxNavigateUp',
+            \ 'l': 'TmuxNavigateRight',
+            \ }
 
+function! s:NavigatePane(direction) abort
+    let l:previous_window = winnr()
+    execute 'wincmd ' . a:direction
 
-" Terminal splits movement - Testing, might break stuff
-if v:version >800
-    tnoremap <C-h> <C-w><C-h>
-    tnoremap <C-j> <C-w><C-j>
-    tnoremap <C-k> <C-w><C-k>
-    tnoremap <C-l> <C-w><C-l>
+    if winnr() != l:previous_window
+        return
+    endif
+
+    if !empty($ZELLIJ)
+        silent call system('zellij action move-focus ' . s:zellij_directions[a:direction])
+    elseif !empty($TMUX) && exists(':' . s:tmux_navigation_commands[a:direction])
+        execute s:tmux_navigation_commands[a:direction]
+    endif
+endfunction
+
+function! s:SetZellijMode(mode) abort
+    if !empty($ZELLIJ)
+        silent call system('zellij action switch-mode ' . a:mode)
+    endif
+endfunction
+
+nnoremap <silent> <C-h> :<C-U>call <SID>NavigatePane('h')<CR>
+nnoremap <silent> <C-j> :<C-U>call <SID>NavigatePane('j')<CR>
+nnoremap <silent> <C-k> :<C-U>call <SID>NavigatePane('k')<CR>
+nnoremap <silent> <C-l> :<C-U>call <SID>NavigatePane('l')<CR>
+
+" Zellij's locked mode passes Ctrl-h/j/k/l through to Vim. Restore normal
+" mode whenever Vim loses focus so the same keys keep working in other panes.
+augroup ZellijPaneNavigation
+    autocmd!
+    autocmd VimEnter,FocusGained * call <SID>SetZellijMode('locked')
+    autocmd FocusLost,VimLeavePre * call <SID>SetZellijMode('normal')
+    if exists('##VimSuspend')
+        autocmd VimSuspend * call <SID>SetZellijMode('normal')
+        autocmd VimResume * call <SID>SetZellijMode('locked')
+    endif
+augroup END
+
+" Make the same navigation work from Vim terminal buffers.
+if has('terminal')
+    tnoremap <silent> <C-h> <C-w>:call <SID>NavigatePane('h')<CR>
+    tnoremap <silent> <C-j> <C-w>:call <SID>NavigatePane('j')<CR>
+    tnoremap <silent> <C-k> <C-w>:call <SID>NavigatePane('k')<CR>
+    tnoremap <silent> <C-l> <C-w>:call <SID>NavigatePane('l')<CR>
 endif
 
 " Tab matches bracket pairs
@@ -210,6 +256,8 @@ map <Leader>tc <esc>:tabclose<CR>
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" Mouse support for netrw
+set mouse=n
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -242,8 +290,11 @@ augroup END
 " -----------------------------------------
 
 
-" Kube config file syntax highlight
-autocmd BufRead,BufNewFile ~/.kube/config set syntax=yaml
+" Treat extensionless and commonly named kubeconfig files as YAML.
+augroup kubeconfig_yaml
+    autocmd!
+    autocmd BufRead,BufNewFile */.kube/config,*/.kube/config.*,*/kubeconfig,*/kubeconfig.*,*.kubeconfig setfiletype yaml
+augroup END
 
 " Folding
 set foldmethod=indent
@@ -345,6 +396,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 1
 
+autocmd FileType markdown setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
 " Helper for tsv files
 au BufNewFile,BufRead *.tsv setlocal noexpandtab shiftwidth=20 softtabstop=20 tabstop=20
 
@@ -360,12 +413,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'nathanaelkane/vim-indent-guides'
 
-    Plug 'ryanoasis/vim-devicons'
+    Plug 'powerman/vim-plugin-AnsiEsc'
 
-    Plug 'blueyed/vim-diminactive'
-    let g:diminactive_enable_focus = 1
-    let g:diminactive_use_syntax = 1
-    let g:diminactive_use_colorcolumn = 1
+    Plug 'hashivim/vim-terraform'
+
+    Plug 'godlygeek/tabular'
+    Plug 'preservim/vim-markdown'
+
+    Plug 'ryanoasis/vim-devicons'
 
     Plug 'easymotion/vim-easymotion'
     map  f <Plug>(easymotion-bd-f)
@@ -421,7 +476,7 @@ function! SetThemeFromSystem()
         set background=light
     endif
     try
-        colorscheme gruvbox
+        colorscheme atom-dark-256
     catch
         try
             colo darkblue
@@ -430,8 +485,10 @@ function! SetThemeFromSystem()
     endtry
 endfunction
 
-call SetThemeFromSystem()
-autocmd FocusGained * call SetThemeFromSystem()
+augroup SystemTheme
+    autocmd!
+    autocmd VimEnter,FocusGained * call SetThemeFromSystem()
+augroup END
 
 
 " WSL yank support
