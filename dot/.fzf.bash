@@ -1,7 +1,13 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */Users/taylor.snyder/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/Users/taylor.snyder/.fzf/bin"
+if [[ ! "$PATH" == */home/tsny/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/home/tsny/.fzf/bin"
 fi
 
-eval "$(fzf --bash)"
+# Auto-completion
+# ---------------
+# source "/home/tsny/.fzf/shell/completion.bash"
+
+# Key bindings
+# ------------
+# source "/home/tsny/.fzf/shell/key-bindings.bash"
