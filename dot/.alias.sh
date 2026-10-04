@@ -57,3 +57,9 @@ then
     alias dkps="docker ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
 fi
 
+
+# WSL clipboard
+if [[ -e /mnt/c/Windows/System32/clip.exe ]]; then
+    pbcopy() { /mnt/c/Windows/System32/clip.exe; }
+    pbpaste() { /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command Get-Clipboard | tr -d '\r'; }
+fi

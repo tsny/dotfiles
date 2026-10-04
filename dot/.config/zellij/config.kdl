@@ -178,13 +178,12 @@ keybinds clear-defaults=true {
         //bind "Alt h" { SwitchToMode "move"; }
     }
     shared_except "locked" "session" {
-        bind "Ctrl o" { SwitchToMode "session"; }
     }
     shared_except "locked" "scroll" {
         bind "Ctrl h" { MoveFocusOrTab "left"; }
         bind "Ctrl l" { MoveFocusOrTab "right"; }
-        bind "Ctrl k" { MoveFocusOrTab "up"; }
-        bind "Ctrl j" { MoveFocusOrTab "down"; }
+        bind "Ctrl k" { MoveFocus "up"; }
+        bind "Ctrl j" { MoveFocus "down"; }
 
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
