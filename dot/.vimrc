@@ -383,6 +383,55 @@ let g:netrw_winsize = 15
 " Hide these filetypes in netrw 
 let g:netrw_list_hide= '.*\.swp$,.DS_Store,ntuser*,NTUSER*,.meta,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
 
+" Refresh visible netrw windows every 10 seconds.  The timer starts only while
+" netrw is open and stops itself after the last netrw window is closed.
+let g:netrw_auto_refresh_interval = get(g:, 'netrw_auto_refresh_interval', 10000)
+
+if exists('g:netrw_auto_refresh_timer')
+    call timer_stop(g:netrw_auto_refresh_timer)
+    unlet g:netrw_auto_refresh_timer
+endif
+
+function! s:RefreshVisibleNetrw(timer) abort
+    let l:netrw_is_visible = 0
+
+    for l:window in getwininfo()
+        if getbufvar(l:window.bufnr, '&filetype') ==# 'netrw'
+            let l:netrw_is_visible = 1
+            " Ctrl-L is netrw's refresh command and preserves its current view.
+            " Avoid nested syntax autocommands, which cannot use :redir from
+            " inside win_execute() on recent Vim versions.
+            call win_execute(l:window.winid,
+                        \ 'silent! noautocmd execute "normal \<C-L>"')
+        endif
+    endfor
+
+    if !l:netrw_is_visible
+        call timer_stop(a:timer)
+        if get(g:, 'netrw_auto_refresh_timer', -1) == a:timer
+            unlet g:netrw_auto_refresh_timer
+        endif
+    endif
+endfunction
+
+function! s:StartNetrwAutoRefresh() abort
+    if !exists('*timer_start') || !exists('*win_execute')
+        return
+    endif
+
+    if !exists('g:netrw_auto_refresh_timer')
+        let g:netrw_auto_refresh_timer = timer_start(
+                    \ g:netrw_auto_refresh_interval,
+                    \ function('<SID>RefreshVisibleNetrw'),
+                    \ {'repeat': -1})
+    endif
+endfunction
+
+augroup NetrwAutoRefresh
+    autocmd!
+    autocmd FileType netrw call <SID>StartNetrwAutoRefresh()
+augroup END
+
 " -- MISC --
 
 " Yanking always copies to clipboard
