@@ -290,6 +290,7 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
+    smart-tabs location="https://github.com/YesYouKenSpace/zellij-smart-tabs/releases/download/v0.2.4/zellij-smart-tabs.wasm"
 }
 
 // Plugins to load in the background when a new session starts
@@ -297,6 +298,7 @@ plugins {
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
     zellij:link
+    smart-tabs
 }
 web_client {
     font "monospace"
@@ -325,6 +327,9 @@ web_client {
 // Default: normal
 // 
 default_mode "normal"
+
+// Full border around each pane (0.45 defaults to a title line only)
+pane_frame_style "full"
  
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
