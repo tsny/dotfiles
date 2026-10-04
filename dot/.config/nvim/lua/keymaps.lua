@@ -5,11 +5,8 @@ vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
 
--- Moving quickly around splits
-vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
+-- Moving around splits, then Zellij/tmux panes at an edge
+require("pane-nav")
 
 vim.keymap.set("n", ";", ":", { noremap = true })
 
@@ -30,7 +27,6 @@ vim.keymap.set("n", "<leader>oe", ":NvimTreeOpen<CR>", { noremap = true, silent 
 -- FZF keybindings
 vim.keymap.set("n", "<C-f>", ":RG<CR>", { noremap = true, silent = true })  -- Switch buffers
 vim.keymap.set("n", "<C-p>", ":Files<CR>", { noremap = true, silent = true })    -- Find files
-vim.keymap.set("n", "<C-h>", ":History<CR>", { noremap = true, silent = true })  -- Open command history
 vim.keymap.set("n", "<leader>ff", ":Files ~/dev<CR>", { noremap = true, silent = true }) -- Find files in ~/dev
 vim.keymap.set("n", "H", ":History<CR>", { noremap = true, silent = true }) -- History command
 

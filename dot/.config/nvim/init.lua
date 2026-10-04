@@ -7,6 +7,7 @@ vim.g.mapleader = ","
 
 -- Basic settings
 vim.opt.number = true       -- Show line numbers
+vim.opt.signcolumn = "yes"  -- Always reserve gutter for git signs
 vim.opt.expandtab = true    -- Use spaces instead of tabs
 vim.opt.smartindent = true  -- Auto-indent new lines
 
@@ -46,12 +47,7 @@ vim.opt.rtp:prepend(lazypath)
 require("keymaps")
 require("lazy").setup("plugins")
 
--- Setup theme here
-local functions = require("functions")
-
-local style = functions.get_mac_theme()
-local theme = style == "light" and "tokyonight-day" or "catppuccin-mocha" or "zaibatsu"
-vim.cmd("colorscheme " .. theme)
+vim.cmd.colorscheme("moonfly")
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = ".tmux.conf",

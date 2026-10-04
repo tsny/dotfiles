@@ -1,10 +1,16 @@
 return {
   -- File tree (like NERDTree)
-  { "nvim-tree/nvim-tree.lua", config = function() 
+  { "nvim-tree/nvim-tree.lua", config = function()
     require("nvim-tree").setup({
-        auto_close = true
-      }) 
-    end 
+      on_attach = function(bufnr)
+        local api = require("nvim-tree.api")
+        api.config.mappings.default_on_attach(bufnr)
+
+        -- Free <C-k> for pane navigation
+        vim.keymap.del("n", "<C-k>", { buffer = bufnr })
+      end,
+    })
+    end
   },
 
   { "nvim-tree/nvim-web-devicons", opts = {} },
@@ -13,13 +19,17 @@ return {
   { 
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    lazy = false,
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c", "lua", "yaml", "json", "vim", "vimdoc", "query", "go", "typescript", "javascript", "html" },
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
+      require("nvim-treesitter").install({ "c", "lua", "yaml", "json", "vim", "vimdoc", "query", "go", "typescript", "javascript", "html" })
 
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          if pcall(vim.treesitter.start, args.buf) then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
     end
   },
 
@@ -80,8 +90,36 @@ return {
   -- Git integration
   { "tpope/vim-fugitive" },
 
+  -- Git change markers in the sign column
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      signs = {
+        add          = { text = "+" },
+        change       = { text = "~" },
+        delete       = { text = "-" },
+        topdelete    = { text = "‾" },
+        changedelete = { text = "~" },
+        untracked    = { text = "┆" },
+      },
+      on_attach = function(bufnr)
+        local gs = require("gitsigns")
+        local map = function(lhs, rhs, desc)
+          vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
+        end
+
+        map("]c", function() gs.nav_hunk("next") end, "Next hunk")
+        map("[c", function() gs.nav_hunk("prev") end, "Prev hunk")
+        map("<leader>hp", gs.preview_hunk, "Preview hunk")
+        map("<leader>hr", gs.reset_hunk, "Reset hunk")
+      end,
+    },
+  },
+
   -- Colorscheme
   { "folke/tokyonight.nvim" },
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 
   {
     'smoka7/hop.nvim',
@@ -144,12 +182,8 @@ return {
       "TmuxNavigatePrevious",
       "TmuxNavigatorProcessList",
     },
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
+    init = function()
+      vim.g.tmux_navigator_no_mappings = 1
+    end,
   }
 }
