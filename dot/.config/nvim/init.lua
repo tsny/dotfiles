@@ -26,6 +26,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2        
 
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = "line,number"
 vim.opt.scrolloff = 20
 vim.opt.syntax = "enable"
 
@@ -48,6 +49,23 @@ require("keymaps")
 require("lazy").setup("plugins")
 
 vim.cmd.colorscheme("moonfly")
+
+-- Keep the cursorline as a second, subtle focus marker in the active split.
+local active_window_group = vim.api.nvim_create_augroup("ActiveWindow", { clear = true })
+
+vim.api.nvim_create_autocmd("WinEnter", {
+  group = active_window_group,
+  callback = function()
+    vim.wo.cursorline = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+  group = active_window_group,
+  callback = function()
+    vim.wo.cursorline = false
+  end,
+})
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = ".tmux.conf",

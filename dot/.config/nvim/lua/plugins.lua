@@ -21,7 +21,7 @@ return {
     build = ":TSUpdate",
     lazy = false,
     config = function()
-      require("nvim-treesitter").install({ "c", "lua", "yaml", "json", "vim", "vimdoc", "query", "go", "typescript", "javascript", "html" })
+      require("nvim-treesitter").install({ "c", "lua", "yaml", "json", "vim", "vimdoc", "query", "go", "typescript", "javascript", "html", "markdown", "markdown_inline" })
 
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
@@ -54,6 +54,16 @@ return {
     end
   },
 
+  -- Render Markdown headings, lists, checkboxes, tables, and code blocks
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+  },
+
 
   -- Fuzzy finder (like fzf)
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
@@ -69,10 +79,15 @@ return {
   -- Autocomplete
   { "hrsh7th/nvim-cmp", dependencies = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer" } },
 
-  -- Pane dimming
-  { "tadaa/vimade", opts = {
-    ncmode = 'windows',
-    }
+  -- Draw an accent border around the active split without dimming its contents
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    event = { "WinLeave" },
+    opts = {
+      highlight = "#80a0ff",
+      excluded_ft = { "NvimTree", "TelescopePrompt" },
+      animate = { enabled = false },
+    },
   },
 
   { "catppuccin/nvim", name = "catppuccin", 
@@ -96,13 +111,22 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       signs = {
-        add          = { text = "+" },
-        change       = { text = "~" },
-        delete       = { text = "-" },
+        add          = { text = "│" },
+        change       = { text = "│" },
+        delete       = { text = "_" },
         topdelete    = { text = "‾" },
         changedelete = { text = "~" },
         untracked    = { text = "┆" },
       },
+      signs_staged = {
+        add          = { text = "│" },
+        change       = { text = "│" },
+        delete       = { text = "_" },
+        topdelete    = { text = "‾" },
+        changedelete = { text = "~" },
+      },
+      signs_staged_enable = true,
+      signcolumn = true,
       on_attach = function(bufnr)
         local gs = require("gitsigns")
         local map = function(lhs, rhs, desc)
